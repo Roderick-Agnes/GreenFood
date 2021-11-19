@@ -1,0 +1,190 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <title>GreenFood</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/css_menu/css/style.css">
+    <link rel="stylesheet" href="~/css/danhmuc.css">
+    <link rel="stylesheet" href="~/css/uudaitrongtuan.css">
+    <link rel="stylesheet" href="~/css/quangcao.css">
+    <link rel="stylesheet" href="~/css/product-select.css">
+    <link rel="stylesheet" href="~/css/tintuc.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    
+
+
+
+</head>
+<body>
+
+
+    <section class="ftco-section">
+        <div class="wrap" style="margin-top:-100px">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="#">+00 1234 567</a></p>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <div class="social-media">
+                            <p class="mb-0 d-flex">
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container" style="width:1300px;">
+                <a class="navbar-brand" href="@Url.Action("Index","GreenFood")"><img src="~/Images/icon_logo.gif" style="width:70px;height:auto;margin-top:-20px;;margin-left:15px;" /></a>
+                <a class="navbar-brand" href="@Url.Action("Index","GreenFood")" style="color: #28a745;">Green<span>Food</span></a>
+
+                <form action="#" class="searchform sf-f order-sm-start order-lg-last">
+                    <div class="form-group sf-f-1 d-flex">
+                        <input type="text" class="form-control pl-3" placeholder="Bạn cần tìm gì?">
+                        <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+                    </div>
+                    <div class="icon-giohang"><span class="ion-md-car">Giỏ hàng</span></div>
+                </form>
+                <div class="row order-sm-start order-lg-last">
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="col">
+                                <a href="@Url.Action("GioHang","GioHang")"><img src="~/Images/shopping-bag.png" style="width:30px;height:auto;margin-left:10px;" /></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="collapse navbar-collapse" id="ftco-nav">
+                            <div class="col">
+                                <ul class="navbar-nav m-auto">
+                                    <li class="nav-item dropdown">
+                                        <img class="dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="~/Images/account.png" style="width:30px;height:auto;margin-left:-35px;" />
+                                        <div class="dropdown-menu" aria-labelledby="dropdown04" style="margin-left:-90px;box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);width:50px;text-align: center;">
+                                            @Html.Action("LoginPartial", "User")
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span> Menu
+                </button>
+                <div class="collapse navbar-collapse" id="ftco-nav" style="width:700px;">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item"><a href="#" class="nav-link">Trang chủ</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Giới thiệu</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sản phẩm</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="#">Page 1</a>
+                                <a class="dropdown-item" href="#">Page 2</a>
+                                <a class="dropdown-item" href="#">Page 3</a>
+                                <a class="dropdown-item" href="#">Page 4</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="#" class="nav-link">Tin tức</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Liên hệ</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </section>
+
+    <!--end menu-->
+
+
+
+    @Html.Action("ChiTietPartial", "GreenFood")
+
+
+
+    <!--footer-->
+    <div class="bg-up">
+        <img src="~/Images/bg-before-footer.png" class="up-bg" />
+    </div>
+    <section class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 f-md">
+                    <div class="box-f-1">
+                        <div class="box-f1">
+                            <h4><span>ĐĂNG KÝ NHẬN THÔNG TIN</span></h4>
+                        </div>
+                        <div class="box-f2">
+                            <p>Đăng ký nhận bảng tin để nhận ưu đãi đặc biệt về sản phẩm của Green Food</p>
+                        </div>
+                        <div class="box-f3">
+                            <form action="#" class="searchform searchform1 order-sm-start order-lg-last">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control pl-3" placeholder="Nhập email của bạn" />
+                                    <button type="submit" placeholder="" class="f-sm">Đăng ký</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 f-md">
+                    <div class="box-f-2">
+                        <div class="box-f11">
+                            <img src="~/Images/icon_logo.gif" style="width:190px;height:auto;margin-top:-70px;margin-bottom:-25px;" />
+                        </div>
+                        <div class="box-f2">
+                            <p>Website thương mại điện tử Green Food do GreenFood Group là đơn vị chủ quản, chịu trách nhiệm và thực hiện các giao dịch liên quan mua sắm sản phẩm hàng hoá tiêu dùng thiết yếu.</p>
+                        </div>
+                        <div class="box-f33">
+                            <img src="~/Images/img-footer.png" style="width:225px;height:auto;margin-top:-30px;text-align:center;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 f-md">
+                    <div class="box-f-1">
+                        <div class="box-f1">
+                            <h4><span>LIÊN HỆ VỚI CHÚNG TÔI</span></h4>
+                        </div>
+                        <div class="box-f2">
+                            <p>Địa chỉ: 266 Đội Cấn, Ba Đình, Hà Nội</p>
+                            <p>Điện thoại: 0382071112</p>
+                            <p>Email: m.contactqc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--end footer-->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    
+</body>
+</html>
+

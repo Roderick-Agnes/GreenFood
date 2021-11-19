@@ -1,0 +1,102 @@
+﻿@using GreenFood.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CHITIETTHUCPHAM>
+@{
+    ViewBag.Title = "DanhMuc";
+    Layout = "~/Views/Shared/_UseLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/jquery-ui.min.css" type="text/css">
+
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/style.css" type="text/css">
+<div class="">
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            <div class="filter__sort">
+                <span>Sắp xếp</span>
+                <select>
+                    <option value="0">Mặc định</option>
+                    @*<option value="0">Default</option>*@
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="filter__found sidebar__item">
+                @foreach (var sp in Model)
+                {
+                    if (sp.MaLoaiThucPham == 1)
+                    {
+                        <h4><span></span>THỊT TƯƠI</h4>
+                        break;
+                    }
+                    else if (sp.MaLoaiThucPham == 2)
+                    {
+                        <h4><span></span>TRÁI CÂY</h4>
+                        break;
+                    }
+                    else if (sp.MaLoaiThucPham == 3)
+                    {
+                        <h4><span></span>RAU CỦ</h4>
+                        break;
+                    }
+                    else if (sp.MaLoaiThucPham == 4)
+                    {
+                        <h4><span></span>HẢI SẢN TƯƠI</h4>
+                        break;
+                    }
+                    else if (sp.MaLoaiThucPham == 5)
+                    {
+                        <h4><span></span>DẦU ĂN THỰC VẬT</h4>
+                        break;
+                    }
+                    else if (sp.MaLoaiThucPham == 6)
+                    {
+                        <h4><span></span>CÁC LOẠI SẢN PHẨM TỪ TRỨNG</h4>
+                        break;
+                    }
+
+
+
+                }
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3">
+            <div class="filter__option">
+                <span class="icon_grid-2x2"></span>
+                <span class="icon_ul"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var sp in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="product__item shadow glyphicon-sort-by-order-alt" style="border-radius: 10px 10px;">
+                <div class="product__item__pic set-bg img-hover-zoom" data-setbg="/Images/Demo-UuDaiTrongTuan/sp2.jpg" style="border-radius: 10px 10px;">
+                    <img src="~/Images/img/@sp.AnhBia" class="" style="border-top-left-radius: 10px;border-top-right-radius: 10px;" />
+                    <ul class="product__item__pic__hover">
+
+                        <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new {id = sp.MaThucPham})" title="Chi tiết"><i class="fa fa-search"></i></a></li>
+                        <li><a href="@Url.Action("ThemGioHang", "GioHang", new {mtp = sp.MaThucPham, url = Request.Url.ToString()})" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="product__item__text" style="margin-top:-20px;height:100px;">
+                    <div class="box-tensp">
+                        <a href="@Url.Action("ChiTietThucPham", "GreenFood", new {id = sp.MaThucPham})" class="tensp">@sp.TenThucPham</a>
+                    </div>
+                    <div class="row">
+                        <span class="col-md-6 giakm">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                        <span class="col-md-6 giagoc">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("DanhMuc", new { iMaLoaiTP = ViewBag.MaLoaiTP, page = page }))
+</div>

@@ -1,0 +1,26 @@
+﻿@using GreenFood.Models
+
+<div class="row spud">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-2 sp1">
+            <span class="gg-ud"><p> -@item.GiamGia% </p></span>
+            <div class="box-img-uu-dai img-hover-zoom ">
+                <img src="~/Images/img/@item.AnhBia" class="img-uu-dai" />
+                <ul class="product-links">
+                    <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = item.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-bag"></i> Thêm vào giỏ</a></li>
+                    <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = item.MaThucPham })"><i class="fa fa-search"></i> Chi tiết</a></li>
+                </ul>
+
+            </div>
+            <div class="box-tensp">
+                <a href="#" class="tensp">@item.TenThucPham</a>
+            </div>
+            <div class="row">
+                <span class="col-md-6 giakm">@string.Format("{0:#,##0,0}", (decimal)@item.Gia - (decimal)(@item.GiamGia * @item.Gia / 100))₫</span>
+
+                <span class="col-md-6 giagoc">@string.Format("{0:#,##0,0}", @item.Gia)₫</span>
+            </div>
+        </div>
+    }
+</div>

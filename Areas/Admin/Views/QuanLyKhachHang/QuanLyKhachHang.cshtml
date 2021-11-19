@@ -1,0 +1,88 @@
+﻿@using GreenFood.Models
+@{
+    ViewBag.Title = "QuanLyKhachHang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">KHÁCH HÀNG</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Danh sách khách hàng</li>
+        </ol>
+        <div class="mb-4">
+            <a href="@Url.Action("Create","QuanLyKhachHang")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm khách hàng</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách thực phẩm
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th>Email</th>
+                            <th>Ngày đăng ký</th>
+                            <th>Tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th>Email</th>
+                            <th>Ngày đăng ký</th>
+                            <th>Tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                            <tr>
+                                <td>@ii.HoTenTV</td>
+                                @if(@ii.GioiTinh == "Male") { 
+                                    <td>Nam</td>
+                                }
+                                else{
+                                    <td>Nữ</td>
+                                }
+                                <td>@ii.DiaChi</td>
+                                <td>@ii.DienThoai</td>
+                                <td>@ii.Email</td>
+                                <td>@Html.FormatValue(@ii.NgayDK, "{0:dd/MM/yyyy}")</td>
+                                <td>@ii.UserName</td>
+                                <td>@ii.Pw</td>
+                                <td style="text-align:center;"><a href="@Url.Action("Edit",new { id = @ii.MaTV})" class=" btn btn-warning" role="button" style="color:white">Sửa</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("Details", new{ id = @ii.MaTV})" class=" btn btn-primary" role="button">Thông tin</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("Delete", new{ id = @ii.MaTV})" class=" btn btn-danger" role="button">Xóa</a></td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+

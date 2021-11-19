@@ -1,0 +1,49 @@
+﻿@model GreenFood.Models.CHUONGTRINHKHUYENMAI
+
+@{
+    ViewBag.Title = "CreateKhuyenMai";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top: 50px;">
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>CHƯƠNG TRÌNH KHUYẾN MÃI</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên khuyến mãi:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="sTenKM" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Thời gian bắt đầu:</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="dThoiGianBD" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Thời gian kết thúc:</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="dThoiGianKT" required />
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-top: 20px;">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="padding-top: 20px;">
+    @Html.ActionLink("Trở lại", "QuanLyKhuyenMai")
+</div>
+</div>

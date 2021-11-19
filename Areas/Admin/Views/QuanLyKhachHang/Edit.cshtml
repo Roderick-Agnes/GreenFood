@@ -1,0 +1,77 @@
+﻿@model GreenFood.Models.THANHVIEN
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CHỈNH SỬA THÔNG TIN KHÁCH HÀNG</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaTV)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Họ và tên:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="HoTen" value="@ViewBag.HoTen" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Giới tính:</label>
+            <div class="col-md-10">
+                <div class="row" style="width:250px;">
+                    <div class="col-5" style="font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Male")  Nam</div>
+                    <div class="col-7" style="font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Female")  Nữ</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa chỉ:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="DiaChi" value="@ViewBag.DiaChi" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Điện thoại:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="DienThoai" value="@ViewBag.DienThoai" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Email:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="Email" value="@ViewBag.Email" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tài khoản:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="UserName" value="@ViewBag.UserName" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mật khẩu:</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" name="Pw" value="@ViewBag.Pw" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="margin-top: 20px;">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div style="padding-top: 20px;">
+        @Html.ActionLink("Trở lại", "QuanLyKhachHang", "QuanLyKhachHang")
+    </div>
+</div>

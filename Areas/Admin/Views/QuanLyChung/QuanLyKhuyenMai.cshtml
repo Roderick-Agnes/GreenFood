@@ -1,0 +1,144 @@
+﻿@using GreenFood.Models
+
+@{
+    ViewBag.Title = "QuanLyKhuyenMai";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">CHƯƠNG TRÌNH KHUYẾN MÃI</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Phân loại chương trình khuyến mãi</li>
+        </ol>
+        <div class="row">
+            @{
+                var i = 0;
+                var tmp = "";
+            }
+            @foreach (var item in Model)
+            {
+                i++;
+                if (i == 1)
+                {
+                    tmp = "bg-primary";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenKM</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("DetailsKhuyenMai", new { id = @item.MaKM})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 2)
+                {
+                    tmp = "bg-warning";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenKM</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("DetailsKhuyenMai", new { id = @item.MaKM})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 3)
+                {
+                    tmp = "bg-success";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenKM</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("DetailsKhuyenMai", new { id = @item.MaKM})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 4)
+                {
+                    tmp = "bg-danger";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenKM</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("DetailsKhuyenMai", new { id = @item.MaKM})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    i = 0;
+                }
+
+            }
+
+
+        </div>
+        <div class=" mb-4">
+            <a href="@Url.Action("CreateKhuyenMai","QuanLyChung")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm chương trình</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách chương trình khuyến mãi
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã khuyến mãi</th>
+                            <th>Tên chương trình khuyến mãi</th>
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã khuyến mãi</th>
+                            <th>Tên chương trình khuyến mãi</th>
+                            <th>Thời gian bắt đầu</th>
+                            <th>Thời gian kết thúc</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                            <tr>
+                                <td>@ii.MaKM</td>
+                                <td>@ii.TenKM</td>
+                                <td>@Html.FormatValue(ii.ThoiGianBD, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.FormatValue(ii.ThoiGianKT, "{0:dd/MM/yyyy}")</td>
+                                @if (ii.Up == 0)
+                                {
+                                    <td style="text-align:center;"><a href="@Url.Action("OnChuongTrinh", "UpCTKhuyenMai", new { id = 1, idCTKM = ii.MaKM })" class=" btn btn-warning" role="button" style="color:white">On</a></td>
+                                }
+                                else { 
+                                    <td style="text-align:center;"><a href="@Url.Action("OffChuongTrinh", "UpCTKhuyenMai", new { id = 0, idCTKM = ii.MaKM})" class=" btn btn-warning" role="button" style="color:white">Off</a></td>
+                                }
+
+                                <td style="text-align:center;"><a href="@Url.Action("EditKhuyenMai",new { id = @ii.MaKM})" class=" btn btn-warning" role="button" style="color:white">Sửa</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("DetailsKhuyenMai", new{ id = @ii.MaKM})" class=" btn btn-primary" role="button">Thông tin</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("DeleteKhuyenMai", new{ id = @ii.MaKM})" class=" btn btn-danger" role="button">Xóa</a></td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

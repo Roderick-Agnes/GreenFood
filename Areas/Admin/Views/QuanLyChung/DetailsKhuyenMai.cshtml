@@ -1,0 +1,75 @@
+﻿@using GreenFood.Models
+
+
+@{
+    ViewBag.Title = "DetailsKhuyenMai";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">
+            CHƯƠNG TRÌNH KHUYẾN MÃI "
+               <a style="color:red">@ViewBag.TenKM</a>
+             "
+        </h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Phân loại chương trình khuyến mãi</li>
+        </ol>
+        <div class="mb-4">
+            <a href="@Url.Action("CreateSanPhamKhuyenMai", "QuanLyChung", new { id = @ViewBag.MaKM})" class="btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm vào khuyến mãi này</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách thực phẩm nằm trong chương trình khuyến mãi:
+                <a style="color:red">@ViewBag.TenKM</a>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã chi tiết</th>
+                            <th>Mã khuyến mãi</th>
+                            <th>Mã thực phẩm</th>
+                            <th>Giảm giá</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã chi tiết</th>
+                            <th>Mã khuyến mãi</th>
+                            <th>Mã thực phẩm</th>
+                            <th>Giảm giá</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                            <tr>
+                                <td>@ii.MaCT</td>
+                                <td>@ii.MaKM</td>
+                                <td>@ii.MaThucPham</td>
+                                <td>@ii.GiamGia %</td>
+                                <td style="text-align:center;"><a href="@Url.Action("EditSanPhamKhuyenMai",new { idMTP = @ii.MaThucPham, idMKM = ii.MaKM})" class=" btn btn-warning" role="button" style="color:white">Sửa</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("DetailsThucPham", new{ id = @ii.MaThucPham})" class=" btn btn-primary" role="button">Thông tin</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("DeleteSanPhamKhuyenMai", new{ idMTP = @ii.MaThucPham, idMKM = ii.MaKM, idMaCT = ii.MaCT})" class=" btn btn-danger" role="button">Xóa</a></td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

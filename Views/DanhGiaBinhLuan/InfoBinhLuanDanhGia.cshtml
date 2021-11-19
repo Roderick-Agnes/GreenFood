@@ -1,0 +1,49 @@
+﻿@using GreenFood.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<BINHLUAN>
+@foreach (var item in Model)
+{
+    var i = 0; var y = 1;<hr />
+    <div class="menu1ii clearfix" style="background-color:white">
+        <div class="col-sm-9">
+
+            <img class="thumbnail" src="~/Images/customer-icon-29.jpg" alt="abc">
+            <h5><span class="bold">@item.TenNguoiBL</span> <span class="date"><i class="fa fa-clock-o"></i>  @Html.FormatValue(@item.NgayBL, "{0:dd/MM/yyyy}")</span></h5>
+            <p>@item.NoiDungBL</p>
+
+        </div>
+        <div class="col-sm-3 text-right">
+            <span class="" style="color:red">
+                @if (item.DanhGia == 5)
+                {
+                    for (; i < (int)item.DanhGia; i++)
+                    {
+                        <i class="fa fa-star"></i>
+                    }
+                }
+                else if (item.DanhGia < 5)
+                {
+                    for (; i < (int)item.DanhGia; i++)
+                    {
+                        <i class="fa fa-star"></i>
+                    }
+                    for (; y <= 5 - (int)item.DanhGia; y++)
+                    {
+                        <i class="fa fa-star-o"></i>
+                    }
+                }
+
+            </span>
+        </div>
+    </div>
+}
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("ChiTietThucPham", "GreenFood", new { id = @ViewBag.MaThucPham, page = page}))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: right;
+        
+    }
+</style>

@@ -1,0 +1,72 @@
+﻿@model GreenFood.Models.CHITIETDONHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container" style="padding-top: 50px;">
+
+    <h4>CHI TIẾT ĐƠN HÀNG</h4>
+    <hr />
+    <div class="dl-horizontal">
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mã đơn hàng:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.MaDonHang" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên khách hàng:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.TenKH" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Loại thực phẩm:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.TenLoai" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên thực phẩm:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.TenThucPham" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Trọng lượng:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.TrongLuong" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tổng tiền:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@Html.FormatValue(@Model.TongTien, "{0:#,##0}")₫" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày thanh toán:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@Html.FormatValue(@ViewBag.NgayThanhToan, "{0:dd/MM/yyyy}")" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tình trạng thanh toán:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.ThanhToan" readonly />
+            </div>
+        </div>
+    </div>
+    <div style="padding-top:10px;">
+
+        @Html.ActionLink("Trở về", "QuanLyDonHang", "QuanLyDonHang") |
+        <a href="@Url.Action("Edit",new { id = @Model.MaDonHang})" class=" btn btn-warning" role="button" style="color:white">Chỉnh sửa</a> |
+        <a href="@Url.Action("ExportToWord",new { id = @Model.MaDonHang})" class=" btn btn-primary" role="button" style="color:white">In hóa đơn</a>
+    </div>
+
+</div>

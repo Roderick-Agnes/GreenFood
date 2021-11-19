@@ -1,0 +1,158 @@
+﻿@using GreenFood.Models
+
+@{
+    ViewBag.Title = "QuanLyThucPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">THỰC PHẨM</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Phân loại thực phẩm</li>
+        </ol>
+        <div class="row">
+            @{
+                var i = 0;
+                var tmp = "";
+            }
+            @foreach (var item in Model)
+            {
+                i++;
+                if (i == 1)
+                {
+                    tmp = "bg-primary";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenLoaiThucPham</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("PhanLoaiThucPham", new { id = @item.MaLoaiThucPham})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 2)
+                {
+                    tmp = "bg-warning";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenLoaiThucPham</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("PhanLoaiThucPham", new { id = @item.MaLoaiThucPham})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 3)
+                {
+                    tmp = "bg-success";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenLoaiThucPham</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("PhanLoaiThucPham", new { id = @item.MaLoaiThucPham})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (i == 4)
+                {
+                    tmp = "bg-danger";
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card @tmp text-white mb-4">
+                            <div class="card-body">@item.TenLoaiThucPham</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="@Url.Action("PhanLoaiThucPham", new { id = @item.MaLoaiThucPham})">Xem chi tiết</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    i = 0;
+                }
+
+            }
+
+
+        </div>
+        @*<div class="row">
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-area me-1"></i>
+                        Area Chart Example
+                    </div>
+                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-1"></i>
+                        Bar Chart Example
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+        </div>*@
+        <div class="mb-4">
+            <a href="@Url.Action("Create","NhapKho")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm thực phẩm</a>
+            <a href="@Url.Action("CreateLoaiThucPham","NhapKho")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm loại thực phẩm</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách thực phẩm
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã thực phẩm</th>
+                            <th>Mã loại</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Trọng lượng</th>
+                            <th>Ảnh bìa</th>
+                            <th>Hạn sử dụng</th>
+                            <th>Số lượng</th>
+                            <th>Số lượng đã bán</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã thực phẩm</th>
+                            <th>Mã loại</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Trọng lượng</th>
+                            <th>Ảnh bìa</th>
+                            <th>Hạn sử dụng</th>
+                            <th>Số lượng</th>
+                            <th>Số lượng đã bán</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @Html.Action("TatCaThucPham", "QuanLyChung")
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+

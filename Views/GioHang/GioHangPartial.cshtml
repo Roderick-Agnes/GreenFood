@@ -1,0 +1,115 @@
+﻿@using GreenFood.Models
+@model List<GioHang>
+<link href="~/Content/ChiTietSanPham/cart.css" rel="stylesheet">
+
+<link href="~/Content/ChiTietSanPham/global.css" rel="stylesheet">
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+<section id="cart_page" class="clearfix cart">
+    <div class="container">
+        <div class="row" style="margin-left:100px;margin-bottom:20px;">
+
+            <div class="cart_3 clearfix">
+                <div class="col-sm-8">
+                    <div class="cart_3l clearfix">
+                        <h5 class="mgt">Giỏ hàng</h5>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        if (item.ccheck == 0)
+                        {
+                            <div class="cart_3l1 clearfix">
+                                <div class="col-sm-3 space_left">
+                                    <div class="cart_3l1i clearfix">
+                                        <a class="hidden">@item.sTenThucPham</a>
+                                        <a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = item.iMaThucPham })"><img src="~/Images/img/@item.sAnhBia" alt="abc" class="iw"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+
+                                    <div class="cart_3l1i1 clearfix">
+                                        <h5 class="mgt"><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = item.iMaThucPham })">@item.sTenThucPham</a></h5>
+
+                                        <h6>Đơn giá: @string.Format("{0:#,##0,0}", @item.dGia)₫</h6>
+
+                                        @*<h5>Số lượng: </h5>*@
+                                    </div>
+                                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { iMaThucPham = item.iMaThucPham }))
+                                    {
+                                        <div class="cart_3l1i2 clearfix">
+                                            <div class="input-group number-spinner">
+                                                <input type="number" style="width:70px;" class="form-control text-center" min="1" max="@item.iSoLuongToiDa" name="txtSoLuong" value="@item.iSoLuong">
+                                            </div>
+                                            @*<a class="mgt"><input type="submit" href="#" value="Cập nhật" /> </a>*@
+
+                                            <h6 class="mgt"><a class="mgt"><input type="submit" style="border:none; background-color:white;margin-left:-40px;" href="#" value="Cập nhật" /> </a></h6>
+                                            <h6 class="mgt"><a class=" mgt" style="font-size:20px;">@Html.ActionLink("Xóa", "XoaSPKhoiGioHang", new { @iMaThucPham = item.iMaThucPham })</a></h6>
+                                            <br><br>
+                                            <h6>Thành tiền: @string.Format("{0:#,##0,0}", @item.dThanhTien)₫</h6>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="cart_3l1 clearfix">
+                                <div class="col-sm-3 space_left">
+                                    <div class="cart_3l1i clearfix">
+                                        <a class="hidden">@item.sTenThucPham</a>
+                                        <a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = item.iMaThucPham })"><img src="~/Images/img/@item.sAnhBia" alt="abc" class="iw"></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+
+                                    <div class="cart_3l1i1 clearfix">
+                                        <h5 class="mgt"><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = item.iMaThucPham })">@item.sTenThucPham <a style="color:red;">(-@item.iGiamGia%)</a></a></h5>
+
+                                        <h6>Chỉ còn: @string.Format("{0:#,##0,0}", @item.dGia)₫ | Giá gốc: <span class="giagoc">@string.Format("{0:#,##0,0}", @item.dGiaGoc)₫</span></h6>
+                                        @*<h5>Số lượng: </h5>*@
+                                    </div>
+                                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { iMaThucPham = item.iMaThucPham }))
+                                    {
+                                        <div class="cart_3l1i2 clearfix">
+                                            <div class="input-group number-spinner">
+                                                <input type="number" style="width:70px;" class="form-control text-center" min="1" max="@item.iSoLuongToiDa" name="txtSoLuong" value="@item.iSoLuong">
+                                            </div>
+                                            @*<a class="mgt"><input type="submit" href="#" value="Cập nhật" /> </a>*@
+
+                                            <h6 class="mgt"><a class="mgt"><input type="submit" style="border:none; background-color:white;margin-left:-40px;" href="#" value="Cập nhật" /> </a></h6>
+                                            <h6 class="mgt"><a class=" mgt" style="font-size:20px;">@Html.ActionLink("Xóa", "XoaSPKhoiGioHang", new { @iMaThucPham = item.iMaThucPham })</a></h6>
+                                            <br><br>
+                                            <h6>Thành tiền: @string.Format("{0:#,##0,0}", @item.dThanhTien)₫</h6>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+
+                </div>
+                <div class="col-sm-4">
+                    
+                    <div class="cart_3r clearfix">
+                        <h5 class="mgt head_1">Tổng số lượng</h5>
+                        <h3 class="text-center">@string.Format("{0:#,##0}", @ViewBag.TongSoLuong)</h3><br>
+
+                    </div>
+                    <div class="cart_3r clearfix">
+                        <h5 class="mgt head_1">Tổng tiền</h5>
+                        <h3 class="text-center">@string.Format("{0:#,##0,0}", @ViewBag.TongTien)₫</h3>
+
+                        <h5 class="text-center"><a class="button" href="@Url.Action("DatHang", "GioHang")">Đặt hàng</a></h5> hoặc
+                        <h5 class="text-center"><a class="button" href="@Url.Action("XoaGioHang", "GioHang")">Xóa toàn bộ sản phẩm trong giỏ hàng</a></h5>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+﻿@model GreenFood.Models.CHITIETTHUCPHAM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container" style="padding-top: 50px;">
+
+    @using (Html.BeginForm("Create","NhapKho", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>THÊM MỚI THỰC PHẨM</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên thực phẩm:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="TenThucPham" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên loại thực phẩm:</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("MaLoaiThucPham")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá:</label>
+                <div class="col-md-10">
+                    <input type="number" min="1" class="form-control" name="Gia" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mô Tả:</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" name="Mota">@ViewBag.MoTa</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Trọng lượng:</label>
+                <div class="col-md-10">
+                    <input type="number" min="1" class="form-control" name="TrongLuong" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ảnh bìa:</label>
+                <div class="col-md-10">
+                    <input type="file" name="fFileUpload" />@ViewBag.ThongBao
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Hạn sử dụng:</label>
+                <div class="col-md-10">
+                    <input type="date" class="form-control" name="HanSuDung" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Số lượng bán:</label>
+                <div class="col-md-10">
+                    <input type="number" min="1" class="form-control" name="SoLuongBan" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-top: 20px;">
+                    <input type="submit" value="Create" class="btn btn-outline-success" />
+                </div>
+            </div>
+            <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-success">
+                @ViewBag.FileStatus
+            </div>
+        </div>
+        </div>
+    }
+
+    <div style="padding-top: 20px;">
+        @Html.ActionLink("Trở lại", "QuanLyThucPham")
+    </div>
+</div>
+
+
+

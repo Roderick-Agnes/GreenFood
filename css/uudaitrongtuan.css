@@ -1,0 +1,189 @@
+.uu-dai-tuan{
+    margin-top:90px;
+    margin-bottom:90px;
+
+}
+
+.uu-dai-tuan .container{
+    max-width: 1270px;
+    border:solid red 2px;
+    border-radius: 30px 30px;
+    position: relative;
+    
+}
+.box-uu-dai{
+    margin-top: -45px;
+    text-align:center;
+    height: 85px;
+    width: 478px;
+    border-radius: 40px 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 15px -3px, rgba(0,0,0, 0.03) 0px 4px 6px -2px;
+    position: relative;
+    z-index:999;
+    background-color: #fff;
+
+}
+.title{
+    margin-top: 15px;
+    position: relative;
+    z-index: 999;
+}
+.title-uu-dai{
+    font: 35px system-ui, "Segoe UI";
+    font-weight: bold;
+    color:#2D1E69;
+    animation: color-animate 5s infinite linear;
+}
+.title-uu-dai:hover{
+    font: 35px system-ui, "Segoe UI";
+    font-weight: bold;
+    color:#FFB416;  
+}
+.svg-hot{
+    margin-left:-10px;
+    margin-right:13px;
+    margin-top:-17px;
+    width: 35px;
+    height: auto;
+}
+
+.box-tensp{
+    margin-top:10px;
+    margin-bottom:10px;
+    font: 17px system-ui, "Segoe UI";
+    text-align: center;
+    
+}
+.box-tensp:hover{
+    font: 17px system-ui, "Segoe UI";
+    text-align: center;
+    
+}
+.tensp{
+    color: black;
+    font: 17px system-ui, "Segoe UI";
+}
+
+.tensp:hover{
+    font: 17px system-ui, "Segoe UI";
+    color: #FFB416;
+}
+.giakm{
+    font: 15px system-ui, "Segoe UI";
+    color:red;
+    text-align: right;
+    font-weight: bold;
+}
+.giagoc{
+    font: 14px system-ui, "Segoe UI";
+    color:gray;
+    text-align: left;
+    text-decoration:line-through;
+}
+.box-img-uu-dai{
+    max-width: 227px;
+    max-height: 227px;
+}
+.img-uu-dai{
+    max-width: 227px;
+    max-height: 227px;
+    margin-left:-5px;
+}
+.spud{
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:30px;
+    margin-top:25px;
+}
+.sp1{
+    max-width: 245px;
+    max-height: auto;
+    /*border-right: solid gray 1px;*/
+}
+.img-hover-zoom {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .9s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.2);
+}
+
+
+/*.//////////////////////*/
+
+.sp1 .box-img-uu-dai{ position: relative; }
+.sp1 .product-links{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    bottom: 15px;
+    left: 0px;
+    transition: all 0.3s ease 0s;
+}
+.sp1:hover .product-links{ opacity: 1; }
+.sp1 .product-links li{
+    margin: 0 0 5px;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease 0s;
+}
+.sp1:hover .product-links li:nth-child(2){ transition: all 0.3s ease 0.15s; }
+.sp1:hover .product-links li{
+    opacity: 1;
+    transform: translateX(0);
+}
+.sp1 .product-links li a{
+    color: #fff;
+    background-color: #00b894;
+    font-size: 14px;
+    text-shadow: 0 0 3px rgba(0,0,0,0.7);
+    padding: 8px 10px;
+    display: block;
+    opacity: 0.9;
+    transition: all 0.3s ease 0s;
+    animation: bg-animate 5s infinite linear;
+}
+.sp1 .product-links li a:hover{
+    color: #fff;
+    box-shadow: 0 0 0 3px #fff inset;
+    opacity: 1;
+}
+.sp1 .product-links li a i{ margin: 0 5px 0 0; }
+
+@keyframes color-animate{
+    0%{ color: #00b894; }
+    20%{ color: #00cec9; }
+    40%{ color: #0984e3; }
+    60%{ color: #6c5ce7; }
+    80%{ color: #e84393; }
+    100%{ color: #00b894; }
+}
+@keyframes box-shadow-animate{
+    0%{ box-shadow: 0 0 0 3px #00b894; }
+    20%{ box-shadow:0 0 0 3px #00cec9; }
+    40%{ box-shadow:0 0 0 3px #0984e3; }
+    60%{ box-shadow:0 0 0 3px #6c5ce7; }
+    80%{ box-shadow:0 0 0 3px #e84393; }
+    100%{ box-shadow:0 0 0 3px #00b894; }
+}
+@keyframes bg-animate{
+    0%{ background-color: #00b894; }
+    20%{ background-color: #00cec9; }
+    40%{ background-color: #0984e3; }
+    60%{ background-color: #6c5ce7; }
+    80%{ background-color: #e84393; }
+    100%{ background-color: #00b894; }
+}
+@media screen and (max-width:1200px){
+    .product-grid{ margin: 0 0 30px; }
+}

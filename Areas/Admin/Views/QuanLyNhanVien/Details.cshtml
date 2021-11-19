@@ -1,0 +1,93 @@
+﻿@model GreenFood.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="padding:50px;">
+    <h4>CHI TIẾT NHÂN VIÊN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ và tên:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.HoTenNV
+        </dd>
+
+        <dt>
+            Chức vụ:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.ChucVu
+        </dd>
+
+        <dt>
+            Điện thoại:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.DienThoai
+        </dd>
+
+        <dt>
+            Giới tính:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.GioiTinh
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.DiaChi
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.Email
+        </dd>
+
+        <dt>
+            Tài khoản:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.TaiKhoan
+        </dd>
+
+        <dt>
+            Mật khẩu:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.MatKhau
+        </dd>
+
+        <dt>
+            Link Facebook:
+        </dt>
+
+        <dd class="form-control">
+            @ViewBag.Facebook
+        </dd>
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = ViewBag.MaNV}) |
+        @Html.ActionLink("Back to List", "QuanLyNhanVien")
+    </p>
+</div>
+
+

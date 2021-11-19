@@ -1,0 +1,332 @@
+.product-option{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.product-option .container{
+    max-width: 1280px;
+    margin-bottom: 20px;
+}
+
+.product-option-2{
+    margin-bottom: 50px;
+}
+.product-option-2 .container{
+    max-width: 1283px;
+    margin-bottom: 20px;
+}
+.op-2-op{
+    margin-left: -24px;
+}
+.op-2-op-2{
+    margin-left: 10px;
+}
+.product-option-3{
+    margin-bottom: 20px;
+}
+.product-option-3 .container{
+    max-width: 1280px;
+    margin-bottom: 20px;
+}
+
+.gg{
+    background-color: #F14E18;
+    position: absolute;
+    z-index: 999;
+    text-align: center;
+    border-radius: 10px 0px 10px 0px;
+    margin-left: -221px;
+    margin-right: 0px;
+    margin-top:0px;
+    width:53px;
+    height:22px;
+}
+
+.gg p{
+    margin-top: 1px;
+    font: 14px system-ui, "Segoe UI";
+    color: white;
+    font-weight:bold;
+
+}
+.gg-ud{
+    background-color: #F14E18;
+    position: absolute;
+    z-index: 999;
+    text-align: center;
+    border-radius: 10px 0px 10px 0px;
+    margin-right: 0px;
+    margin-top:0px;
+    width:53px;
+    height:22px;
+}
+.gg-ud p{
+    margin-top: 1px;
+    font: 14px system-ui, "Segoe UI";
+    color: white;
+    font-weight:bold;
+
+}
+.option-1{
+    background-image: url("../Images/bg-option/bg-title-link-1.jpg");
+    max-width: 305px;
+    max-height: 293px;
+    width: 305px;
+    height: 293px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: -10px;
+    border-radius: 20px 20px; 
+    position: relative;
+    display: inline-block;/* khóa div ở 1 chỗ cố định*/
+}
+.option-2{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.option-3{
+    margin-bottom: 40px;
+}
+.option-4{
+    background-image: url("../Images/bg-option/bg-title-link-2.jpg");
+    max-width: 305px;
+    max-height: 293px;
+    width: 305px;
+    height: 293px;
+    margin-bottom: 40px;
+    margin-left: -10px;
+    border-radius: 20px 20px; 
+    position: relative;
+    display: inline-block;/* khóa div ở 1 chỗ cố định*/
+}
+.option-5{
+    background-image: url("../Images/bg-option/bg-title-link-3.jpg");
+    max-width: 305px;
+    max-height: 293px;
+    width: 305px;
+    height: 293px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: -10px;
+    border-radius: 20px 20px; 
+    position: relative;
+    display: inline-block;/* khóa div ở 1 chỗ cố định*/
+}
+.link-option{
+    margin-left:40px;
+    margin-right:40px;
+    position: relative;
+    z-index:2;
+    margin-top:35px;
+}
+
+.op1 a{
+    font: 20px system-ui, "Segoe UI";
+    color:black;
+    font-weight:bold;
+}
+.op1 a:hover{
+    font: 20px system-ui, "Segoe UI";
+    color:#FFB416;
+    font-weight:bold;
+}
+.op2 li{
+    color:green;
+    margin-left:-20px;
+}
+.op2 li a{
+    font: 16px system-ui, "Segoe UI";
+    color:black;
+}
+.op2 li a:hover{
+    font: 16px system-ui, "Segoe UI";
+    color:#FFB416;
+}
+.op3{
+    border-radius: 30px 30px;
+    margin-right: 60px;
+    text-align: center;
+    background-color: red;
+    margin-top: -5px;
+}
+.op3:hover{
+    background-color: #FFB416;
+}
+.op3 a{
+    color: white;
+    font: 13px system-ui, "Segoe UI";
+}
+.giaban{
+    font: 15px system-ui, "Segoe UI";
+    color:red;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box-sp-op{
+    border: solid #E6E6E6 1px;
+    border-radius: 10px 10px;
+    margin-left:15px;
+    max-width:223px;
+    max-height: 295px;
+    width:223px;
+    height: 295px;
+    display: inline-block;
+}
+.box-op{
+    border-radius: 10px 10px;
+    margin-left:-15px;
+    max-width: 221px;
+    max-height: 221px;
+    width: 221px;
+    height: 221px;
+}
+.img-op{
+    max-width: 221px;
+    max-height: 221px;
+    width: 221px;
+    height: 221px;
+}
+/*//////////////*/
+.box-sp-op .box-img-uu-dai{ position: relative; }
+.box-sp-op .product-links{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    bottom: 15px;
+    left: 0px;
+    transition: all 0.3s ease 0s;
+}
+.box-sp-op:hover .product-links{ opacity: 1; }
+.box-sp-op .product-links li{
+    margin: 0 0 5px;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease 0s;
+}
+.box-sp-op:hover .product-links li:nth-child(2){ transition: all 0.3s ease 0.15s; }
+.box-sp-op:hover .product-links li{
+    opacity: 1;
+    transform: translateX(0);
+}
+.box-sp-op .product-links li a{
+    color: #fff;
+    background-color: #00b894;
+    font-size: 14px;
+    text-shadow: 0 0 3px rgba(0,0,0,0.7);
+    padding: 8px 10px;
+    display: block;
+    opacity: 0.9;
+    transition: all 0.3s ease 0s;
+    animation: bg-animate 5s infinite linear;
+}
+.box-sp-op .product-links li a:hover{
+    color: #fff;
+    box-shadow: 0 0 0 3px #fff inset;
+    opacity: 1;
+}
+.box-sp-op .product-links li a i{ margin: 0 5px 0 0; }
+
+@keyframes color-animate{
+    0%{ color: #00b894; }
+    20%{ color: #00cec9; }
+    40%{ color: #0984e3; }
+    60%{ color: #6c5ce7; }
+    80%{ color: #e84393; }
+    100%{ color: #00b894; }
+}
+@keyframes bg-animate{
+    0%{ background-color: #00b894; }
+    20%{ background-color: #00cec9; }
+    40%{ background-color: #0984e3; }
+    60%{ background-color: #6c5ce7; }
+    80%{ background-color: #e84393; }
+    100%{ background-color: #00b894; }
+}
+@media screen and (max-width:1200px){
+    .product-grid{ margin: 0 0 30px; }
+}
+
+.sl-qc-2{
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.sl-qc-2 .container{
+    max-width: 1295px;
+    margin-bottom: 20px;
+    height:226px;
+    margin-top:20px;
+}
+.box-sl-qc-2{
+    background-image: url('../Images/bg_delivery_express2.jpg');
+    background-position: center; /* Center the image */
+    background-size: cover;
+    height:226px;
+    position: relative;
+    z-index:2;
+    border-radius: 15px 15px;
+}
+
+.title-sl-qc-2{
+    text-align: center;
+    font: 20px system-ui, "Segoe UI";
+}
+.tt-sl-2 {
+    height:30px;
+    font: 26px system-ui, "Segoe UI";
+    color:white;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+/*.tt-sl-2 a{
+    margin-top:-40px;
+}*/
+.ab-tt{
+    color:black;
+}
+.ab-tt a:hover{
+    color:white;
+}
+.box-con{
+    margin-top:70px;
+    margin-left:75px;
+    position: absolute;
+    z-index:2;
+}
+.bt-tht{
+    height:30px;
+    border-radius: 30px 30px;
+    text-align: center;
+    background-color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-left:470px;
+    margin-right:470px;
+    
+}
+.bt-tht:hover{
+    background-color: #FFB416;
+
+}
+.bt-tht a{
+    color: black;
+    font: 15px system-ui, "Segoe UI";
+    height:30px;
+    text-align: center;
+}
+.bt-tht a:hover{
+    color: white;
+    font: 15px system-ui, "Segoe UI";
+    height:50px;
+    text-align: center;
+
+    
+}
+
+
+
+

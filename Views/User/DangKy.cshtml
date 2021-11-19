@@ -1,0 +1,200 @@
+﻿@model GreenFood.Models.THANHVIEN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dang Nhap</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/DangNhap/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/DangNhap/css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    @using (Html.BeginForm("DangKy", "User"))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('../../Content/DangNhap/images/bg-01.jpg');">
+                <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+                    <form class="login100-form validate-form flex-sb flex-w">
+                        <span class="login100-form-title p-b-53">
+                            Sign Up
+                        </span>
+                        <h5 style="color:red; text-align:center;">@ViewBag.ThongBao</h5>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="p-t-31 p-b-9">
+                                    <span class="txt1">
+                                        Họ tên:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Username is required">
+                                    <input class="input100" type="text" name="HoTenTV">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err1"]</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-t-31 p-b-9">
+                                    <span class="txt1">
+                                        UserName:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Username is required">
+                                    <input class="input100" type="text" name="UserName">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err2"]</h6>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Mật khẩu:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input class="input100" type="password" name="Pw">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err3"]</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Xác nhận mật khẩu:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input class="input100" type="password" name="PwNL">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err4"]</h6>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Email:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input class="input100" type="text" name="Email">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err5"]</h6>
+                            </div>
+                            <div class="col-12">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Địa chỉ:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input class="input100" type="text" name="DiaChi">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err6"]</h6>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Điện thoại:
+                                    </span>
+                                </div>
+                                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input class="input100" type="text" name="DienThoai">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err7"]</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-t-13 p-b-9">
+                                    <span class="txt1">
+                                        Giới tính:
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5" style="margin-top:15px;font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Male")  Nam</div>
+                                    <div class="col-7" style="margin-top:15px;font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Female")  Nữ</div>
+                                </div>
+                                <h6 style="color:red;">@ViewData["Err8"]</h6>
+                            </div>
+                        </div>
+
+                        <div class="container-login100-form-btn m-t-17">
+                            <button class="login100-form-btn" type="submit">
+                                Sign Up
+                            </button>
+                        </div>
+
+                        <div class="w-full text-center p-t-55">
+                            <span class="txt2">
+                                Đã có tài khoản?
+                            </span>
+
+                            <a href="@Url.Action("DangNhap","User")" class="txt2 bo1">
+                                Đăng nhập ngay
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/DangNhap/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/Content/DangNhap/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/DangNhap/js/main.js"></script>
+
+</body>
+</html>
+

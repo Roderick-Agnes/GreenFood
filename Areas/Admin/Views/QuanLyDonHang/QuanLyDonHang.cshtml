@@ -1,0 +1,81 @@
+﻿@using GreenFood.Models
+@{
+    ViewBag.Title = "QuanLyDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">ĐƠN ĐẶT HÀNG</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Danh sách đơn đặt hàng</li>
+        </ol>
+        <div class="mb-4">
+            <a href="@Url.Action("Create","QuanLyDonHang")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm đơn hàng</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách đơn đặt hàng
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã đơn hàng:</th>
+                            <th>Tên khách hàng:</th>
+                            <th>Ngày đặt:</th>
+                            <th>Ngày giao:</th>
+                            <th>Ghi chú:</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã đơn hàng:</th>
+                            <th>Tên khách hàng:</th>
+                            <th>Ngày đặt:</th>
+                            <th>Ngày giao:</th>
+                            <th>Ghi chú:</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                            <tr>
+                                <td>@ii.MaDonHang</td>
+                                <td>@ii.THANHVIEN.HoTenTV</td>
+                                <td>@Html.FormatValue(@ii.NgayDat, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.FormatValue(@ii.NgayGiao, "{0:dd/MM/yyyy}")</td>
+                                <td>@ii.GhiChu</td>
+                                @*@if(ii.CHITIETDONHANG.ThanhToan == 1) { 
+                                    <td>Đã thanh toán</td>
+                                }
+                                else {
+                                    <td>Chưa thanh toán</td>
+                                }*@
+                                <td style="text-align:center;"><a href="@Url.Action("ExportToWord",new { id = @ii.MaDonHang})" class=" btn btn-success" role="button" style="color:white">In</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("Edit",new { id = @ii.MaDonHang})" class=" btn btn-warning" role="button" style="color:white">Sửa</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("Details", new{ id = @ii.MaDonHang})" class=" btn btn-primary" role="button">Chi tiết</a></td>
+                                <td style="text-align:center;"><a href="@Url.Action("Delete", new{ id = @ii.MaDonHang})" class=" btn btn-danger" role="button">Xóa</a></td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+

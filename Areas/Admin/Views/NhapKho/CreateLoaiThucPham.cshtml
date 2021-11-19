@@ -1,0 +1,38 @@
+﻿@model GreenFood.Models.LOAITHUCPHAM
+
+@{
+    ViewBag.Title = "CreateLoaiThucPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container" style="padding-top: 50px;">
+
+    @using (Html.BeginForm("CreateLoaiThucPham", "NhapKho", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>THÊM MỚI LOẠI THỰC PHẨM</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên loại thực phẩm:</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" name="sTenLoaiThucPham" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-top: 20px;">
+                    <input type="submit" value="Create" class="btn btn-outline-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="padding-top: 20px;">
+        @Html.ActionLink("Trở lại", "QuanLyChung")
+    </div>
+</div>

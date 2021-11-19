@@ -1,0 +1,44 @@
+.qc{
+    margin-top:70px;
+    margin-bottom:70px;
+}
+.qc .container{
+    max-width: 1270px;
+}
+.box-img-qc-1{
+    max-width: 600px;
+    max-height: 280px;
+    border-radius: 20px 20px;
+    display: block;
+}
+.box-img-qc-2{
+    max-width: 600px;
+    max-height: 280px;
+    border-radius: 20px 20px;
+    display: block;
+    margin-left:70px;
+}
+.img-qc-1{
+    border-radius: 20px 20px;
+    text-align: center;
+    margin-left: -30px;
+}
+.img-qc-2{
+    border-radius: 20px 20px;
+    text-align: center;
+    margin-left: -30px;
+}
+.img-qc-hover-zoom {
+  /*height: 300px;  [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-qc-hover-zoom img {
+  transition: transform .9s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-qc-hover-zoom:hover img {
+  transform: scale(1.1);
+}

@@ -1,0 +1,118 @@
+﻿@model GreenFood.Models.CHITIETTHUCPHAM
+
+@{
+    ViewBag.Title = "EditThucPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Chỉnh sửa thông tin</h2>
+
+    @using (Html.BeginForm(Html.BeginForm("EditThucPham", "QuanLyChung", FormMethod.Post, new { @enctype = "multipart/form-data" })))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.STT)
+            <div class="form-group" hidden>
+                <label class="control-label col-md-2">Mã thực phẩm:</label>
+                <div class="col-md-10">
+                    <input type="text" size="70" name="iMaThucPham" value="@Model.MaThucPham" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Tên phone:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" size="70" name="sTenThucPham" value="@Model.TenThucPham" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Loại thực phẩm:</label>
+                <div class="col-md-10">
+                    @Html.DropDownList( "MaLoaiThucPham")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Giá bán:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="number" min="1" required name="mGia" value="@Model.Gia" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mô tả:</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" name="sMoTa"><p>@Model.Mota.Replace("\n", "</p><p>")</p></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Trọng lượng:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="number" min="1" required name="iTrongLuong" value="@Model.TrongLuong" />
+                    @if (@Model.MaLoaiThucPham == 1 || @Model.MaLoaiThucPham == 4)
+                    {
+                        <p>Đơn vị: Kg</p>
+                    }
+                    else if (@Model.MaLoaiThucPham == 2 || @Model.MaLoaiThucPham == 3)
+                    {
+                        <p>Đơn vị: g</p>
+                    }
+                    else if (@Model.MaLoaiThucPham == 5)
+                    {
+                        <p>Đơn vị: lít</p>
+                    }
+                    else
+                    {
+                        <p>Hộp @Model.TrongLuong trứng</p>
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Ảnh bìa:</label>
+                <div class="col-md-10">
+                    <input type="file" name="fFileUpload" /><br />
+                    <img src="~/Images/img/@Model.AnhBia" width="120">(Ảnh hiện tại)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Hạn sử dụng:</label>
+                <div class="col-md-10">
+                    <input type="datetime" class="form-control" name="dHanSuDung" required value="@Convert.ToDateTime(Model.HanSuDung)" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Số lượng:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="number" min="1" required name="iSoLuongBan" value="@Model.SoLuongBan" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Số lượng đã bán:</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="number" min="0" required name="iSoLuongDaBan" value="@Model.SoLuongDaBan" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-top:10px;">
+                    <input type="submit" value="Save" class="btn btn-outline-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "QuanLyThucPham")
+    </div>
+
+</div>

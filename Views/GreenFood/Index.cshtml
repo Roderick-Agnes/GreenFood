@@ -1,0 +1,347 @@
+﻿@using GreenFood.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!--slider-->
+
+<div class="home-slider swiper-container gallery-top swiper-container-initialized swiper-container-horizontal">
+    <div class="swiper-wrapper" id="swiper-wrapper-1aa7b9a5ffb416103" aria-live="off" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 1" style="width: 100%;">
+            <a href="#" class="clearfix" title="Green Food">
+                <picture>
+                    <img src="~/Images/slider_1.jpg" alt="Green Food" class="img-responsive center-block d-block mx-auto sl-qc-1">
+                </picture>
+            </a>
+        </div>
+
+    </div>
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span></div>
+    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+</div>
+
+<!--end slider-->
+<!--Danh mục-->
+
+    <section class="swiper-danhmuc">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_1.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=6" class="text-dm">Trứng và bơ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_2.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=2" class="text-dm">Thưc phẩm khô</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_3.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=1" class="text-dm">Thịt tươi sống</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_4.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=2" class="text-dm">Trái cây</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_5.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=3" class="text-dm">Rau củ quả</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-dm">
+                        <div class="danh_muc">
+                            <img src="~/Images/Danh_muc/cate_6.jpg" class="dm_img" title="Trứng và bơ" alt="Trứng và bơ" />
+                        </div>
+                        <div class="box-text">
+                            <a href="/GreenFood/DanhMuc?iMaLoaiTP=2" class="text-dm">Nước ép</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--end danh mục-->
+    <!--Ưu đãi trong tuần-->
+
+    <section class="uu-dai-tuan">
+        <div class="container">
+            @Html.Action("ChuongTrinhKhuyenMai", "UpKhuyenMai")
+
+
+        </div>
+    </section>
+
+    <!--end ưu đãi trong tuần-->
+    <!--Quảng cáo 2/2-->
+
+    <secsion class="qc">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 box-img-qc-1 img-qc-hover-zoom">
+                    <img src="~/Images/Demo-QuangCao/banner_1.jpg" alt="Quảng cáo" title="Quảng cáo" class="img-qc-1" />
+                </div>
+                <div class="col-md-6 box-img-qc-2 img-qc-hover-zoom">
+                    <img src="~/Images/Demo-QuangCao/banner_2.jpg" alt="Quảng cáo" title="Quảng cáo" class="img-qc-2" />
+                </div>
+            </div>
+        </div>
+    </secsion>
+
+    <!--end QC-->
+    <!--product-option-->
+
+    <section class="product-option">
+        <div class="container">
+            <!--option 1-->
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="option-1">
+                        <div class="link-option">
+                            <div class="op1">
+                                <a href="#">Trái cây</a><br>
+                            </div>
+                            <div class="op2">
+                                <ul>
+                                    <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=2">Trái cây</a></li>
+
+                                    <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=3">Rau củ</a></li>
+
+                                    <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=1">Thịt tươi</a></li>
+
+                                    <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=4">Hải sản</a></li>
+
+                                    <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=5">Dầu ăn thực vật</a></li>
+                                </ul>
+                            </div>
+                            <div class="op3">
+                                <a href="/GreenFood/DanhMuc?iMaLoaiTP=2">Mua sắm ngay bây giờ!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="option-2">
+                        <div class="row">
+                            @foreach (var sp in Model)
+                            {
+                                if (sp.THUCPHAM.CheckSale == 1)
+                                {
+                                    <div class="col-md-3 box-sp-op">
+                                        <div class="box-img-uu-dai img-hover-zoom box-op">
+                                            <img src="~/Images/img/@sp.AnhBia" class="img-op" />
+                                            <ul class="product-links">
+                                                <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-bag"></i> Thêm vào giỏ</a></li>
+                                                <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i> Chi tiết</a></li>
+                                            </ul>
+                                            <span class="gg"><p> - @sp.THUCPHAM.GiamGia% </p></span>
+                                        </div>
+                                        <div class="box-tensp">
+                                            <a href="#" class="tensp">@sp.TenThucPham</a>
+                                        </div>
+                                        <div class="row">
+                                            <span class="col-md-6 giakm">@string.Format("{0:#,##0,0}", (decimal)@sp.Gia - (decimal)(@sp.THUCPHAM.GiamGia * sp.Gia / 100))₫</span>
+                                            <span class="col-md-6 giagoc">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-3 box-sp-op">
+                                        <div class="box-img-uu-dai img-hover-zoom box-op">
+                                            <img src="~/Images/img/@sp.AnhBia" class="img-op" />
+                                            <ul class="product-links">
+                                                <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-bag"></i> Thêm vào giỏ</a></li>
+                                                <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i> Chi tiết</a></li>
+                                            </ul>
+                                            @*<span class="gg"><p> - 41% </p></span>*@
+                                        </div>
+                                        <div class="box-tensp">
+                                            <a href="#" class="tensp">@sp.TenThucPham</a>
+                                        </div>
+                                        <div class="row">
+                                            <span class="col-md-12 giaban">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--option 2-->
+    <sesion class="product-option-2">
+        @Html.Action("SessionRCQ_Partial", "GreenFood")
+    </sesion>
+
+    <!--option 3-->
+    <section class="product-option-3">
+        @Html.Action("SessionTPT_Partial", "GreenFood")
+    </section>
+    <!--end product-option-->
+    <!--slider-qc-2-->
+
+    <section class="sl-qc-2">
+        <div class="container ">
+            <div class="box-sl-qc-2">
+                <div class="box-con">
+                    <div class="title-sl-qc-2">
+                        <div class="tt-sl-2"><a>Giao hàng miễn phí tận nhà trong vòng 24h</a></div>
+                    </div>
+                    <div class="bt-tht">
+                        <a href="#">Tìm hiểu thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--end-slider-qc-2-->
+    <!--
+        <section class="tintuc-section">
+            <div class="container">
+                <div class="title-tintuc">
+                    <h2>
+                        <a>Tin tức mới nhất</a>
+                    </h2>
+                </div>
+                <div class="bg-tintuc">
+                    <img src="~/Images/bg-title-after.png" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="featured-carousel owl-carousel">
+                            <div class="item">
+                                <div class="blog-entry">
+                                    <a href="#" class="block-20 d-flex align-items-start img-tt-img" style="background-image: url('~/Images/Demo-tintuc/tt1.jpg');">
+                                    </a>
+
+                                    <div class="text border border-top-0 p-4 img-tt-img-2">
+                                        <h3 class="heading"><a href="#">Đi chợ online: Xu hướng lên ngôi...</a></h3>
+                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                        <div class="d-flex align-items-center mt-4 img-tt-img-2">
+                                            <p class="mb-0"><a href="#" class="btn btn-primary">Đọc ngay</a></p>
+                                            <p class="ml-auto meta2 mb-0">
+
+                                                <a href="#" class="mr-2">
+                                                    <span class="ion-ios-person"></span> <span class="day-kh"> MCC</span>
+                                                    <span class="ion-ios-calendar"></span> <span class="day-kh"> 5/9/2021</span>
+                                                </a>
+                                                <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> <span class="day-kh"> 3</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="blog-entry">
+                                    <a href="#" class="block-20 d-flex align-items-start img-tt-img" style="background-image: url('~/Images/Demo-tintuc/tt2.jpg');">
+                                    </a>
+
+                                    <div class="text border border-top-0 p-4 img-tt-img-2">
+                                        <h3 class="heading"><a href="#">Cách chọn rau củ quả sạch tươi...</a></h3>
+                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                        <div class="d-flex align-items-center mt-4 img-tt-img-2">
+                                            <p class="mb-0"><a href="#" class="btn btn-primary">Đọc ngay</a></p>
+                                            <p class="ml-auto meta2 mb-0">
+
+                                                <a href="#" class="mr-2">
+                                                    <span class="ion-ios-person"></span> <span class="day-kh"> MCC</span>
+                                                    <span class="ion-ios-calendar"></span> <span class="day-kh"> 5/9/2021</span>
+                                                </a>
+                                                <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> <span class="day-kh"> 3</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="blog-entry">
+                                    <a href="#" class="block-20 d-flex align-items-start img-tt-img" style="background-image: url('~/Images/Demo-tintuc/tt3.jpg');">
+                                    </a>
+
+                                    <div class="text border border-top-0 p-4 img-tt-img-2">
+                                        <h3 class="heading"><a href="#">Các loại ngũ cốc tốt cho sức khỏe</a></h3>
+                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                        <div class="d-flex align-items-center mt-4 img-tt-img-2">
+                                            <p class="mb-0"><a href="#" class="btn btn-primary">Đọc ngay</a></p>
+                                            <p class="ml-auto meta2 mb-0">
+
+                                                <a href="#" class="mr-2">
+                                                    <span class="ion-ios-person"></span> <span class="day-kh"> MCC</span>
+                                                    <span class="ion-ios-calendar"></span> <span class="day-kh"> 5/9/2021</span>
+                                                </a>
+                                                <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> <span class="day-kh"> 3</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="blog-entry">
+                                    <a href="#" class="block-20 d-flex align-items-start img-tt-img" style="background-image: url('~/Images/Demo-tintuc/tt4.jpg');">
+                                    </a>
+
+                                    <div class="text border border-top-0 p-4 img-tt-img-2">
+                                        <h3 class="heading"><a href="#">Các cách chế biến món ăn từ rau...</a></h3>
+                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                        <div class="d-flex align-items-center mt-4 img-tt-img-2">
+                                            <p class="mb-0"><a href="#" class="btn btn-primary">Đọc ngay</a></p>
+                                            <p class="ml-auto meta2 mb-0">
+
+                                                <a href="#" class="mr-2">
+                                                    <span class="ion-ios-person"></span> <span class="day-kh"> MCC</span>
+                                                    <span class="ion-ios-calendar"></span> <span class="day-kh"> 5/9/2021</span>
+                                                </a>
+                                                <a href="#" class="meta-chat"><span class="ion-ios-chatboxes"></span> <span class="day-kh"> 3</span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--end product slider tin tức-->

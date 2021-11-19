@@ -1,0 +1,42 @@
+﻿/*-- Review Form --*/
+
+.review-form .input {
+    margin-bottom: 15px;
+}
+
+.review-form .input-rating {
+    margin-bottom: 15px;
+}
+
+    .review-form .input-rating .stars {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+        .review-form .input-rating .stars input[type="radio"] {
+            display: none;
+        }
+
+        .review-form .input-rating .stars > label {
+            float: right;
+            cursor: pointer;
+            padding: 0px 3px;
+            margin: 0px;
+        }
+
+            .review-form .input-rating .stars > label:before {
+                content: "\f006";
+                font-family: FontAwesome;
+                color: #8D8B88;
+                -webkit-transition: 0.2s all;
+                transition: 0.2s all;
+            }
+
+            .review-form .input-rating .stars > label:hover:before, .review-form .input-rating .stars > label:hover ~ label:before {
+                color: #D10024;
+            }
+
+        .review-form .input-rating .stars > input:checked label:before, .review-form .input-rating .stars > input:checked ~ label:before {
+            content: "\f005";
+            color: #D10024;
+        }

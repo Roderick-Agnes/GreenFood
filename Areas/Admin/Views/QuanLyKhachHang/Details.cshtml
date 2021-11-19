@@ -1,0 +1,79 @@
+﻿@model GreenFood.Models.THANHVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top: 50px;">
+    <h4>THÔNG TIN THÀNH VIÊN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ và tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenTV)
+        </dd>
+
+        <dt>
+            Giới tính:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            Điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Ngày đăng ký:
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.NgayDK, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pw)
+        </dd>
+
+    </dl>
+    <a href="@Url.Action("Edit",new { id = @Model.MaTV})" class=" btn btn-warning" role="button" style="color:white">Chỉnh sửa</a>|
+    @Html.ActionLink("Trở về", "QuanLyKhachHang", "QuanLyKhachHang")
+</div>

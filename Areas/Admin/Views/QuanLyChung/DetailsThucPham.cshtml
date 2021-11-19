@@ -1,0 +1,103 @@
+﻿@model GreenFood.Models.CHITIETTHUCPHAM
+
+@{
+    ViewBag.Title = "DetailsThucPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetailsThucPham</h2>
+
+<div class="container">
+    <div>
+    <h4>CHI TIẾT THỰC PHẨM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã thực phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaThucPham)
+        </dd>
+
+        <dt>
+            Tên thực phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenThucPham)
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/img/@Model.AnhBia" alt="@Model.TenThucPham" style="width:500px;height:auto;" />
+        </dd>
+
+        <dt>
+            Loại thực phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAITHUCPHAM.TenLoaiThucPham)
+        </dd>
+
+        <dt>
+            Giá:
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.Gia, "{0:#,##0}")₫
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.Mota.ToString().Replace("\n", "</p><p>"))
+        </dd>
+
+        <dt>
+            Trọng lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrongLuong)
+        </dd>
+
+
+
+        <dt>
+            Hạn sử dụng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HanSuDung)
+        </dd>
+
+        <dt>
+            Số lượng bán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongBan)
+        </dd>
+
+        <dt>
+            Số lượng đã bán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongDaBan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "EditThucPham", new { id = @Model.MaThucPham }, new { @class = "btn btn-outline-success" }) |
+    @Html.ActionLink("Back to List", "QuanLyThucPham")
+</p>
+</div>

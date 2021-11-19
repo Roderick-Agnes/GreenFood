@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GreenFood.Models.MiddleClass>
+
+@{
+    double TrungBinhDanhGia = 0;
+    if (ViewBag.SoLuongDanhGia != 0)
+    {
+        TrungBinhDanhGia = Math.Round((double)(1.0 * ViewBag.TongDanhGia * 10 / ViewBag.SoLuongDanhGia));
+    }
+
+    TrungBinhDanhGia /= 10;
+}
+<link rel="stylesheet" href="~/Content/TongHopDanhGia.css">
+<div class="col-sm-6">
+    <div class="grid clearfix" style="padding-top: 0px">
+        @*<figure class="effect-jazz">*@
+            <h3 class="container-fluid" style="text-align:center">ĐÁNH GIÁ TRUNG BÌNH</h3>
+            <div id="rating">
+                <div class="rating-avg">
+                    <h2 class="container-fluid" style="color:#CB1C22;font-weight:bold;text-align:center">@TrungBinhDanhGia/5</h2>
+                    <h2 class="rating-stars container-fluid" style="text-align:center;margin-bottom:0px;margin-top:0px;">
+                        @{ int star = 0;}
+                        @for (; star < @Math.Floor((double)TrungBinhDanhGia); star++)
+                        {
+                            <i class="fa fa-star" style="color:orange;"></i>
+
+                        }
+                        @if (star < @Math.Ceiling((double)TrungBinhDanhGia))
+                        {
+                            <i class="fa fa-star-half-full" style="color:orange;"></i>
+                            star++;
+                        }
+                        @for (; star < 5; star++)
+                        {
+                            <span class="fa fa-star-o"></span>
+                        }
+                    </h2>
+
+                </div>
+                <ul class="rating container-fluid" style="text-align:center;">
+                    @for (int i = 0; i < 5; i++)
+                    {
+
+                        int DanhGia = 0;
+                        foreach (var dg in Model)
+                        {
+                            if (5 - i == dg.SoSao)
+                            {
+                                DanhGia = dg.SoLuongDanhGia;
+                                break;
+                            }
+                        }
+                        int TiLe = (int)Math.Round(1.0 * DanhGia * 100 / ViewBag.SoLuongDanhGia);
+                        <li style="padding-left:10px;">
+                            <div class="rating-stars">
+                                @{int j = 0;}
+                                @for (; j < 5 - i; j++)
+                                {
+                                    j = 5 - i;
+                                    <span>@j </span><i class="fa fa-star" style="color: orange;"></i>break;
+                                }
+                                @*@for (int k = 0; k < 5 - j; k++)
+                                {
+                                    <i class="fa fa-star-o"></i>
+                                }*@
+                            </div>
+                            <div class="rating-progress" style="max-width:170px;width:170px;">
+                                <div style="background-color: #48BB78;width: @TiLe%"></div>
+                            </div>
+                            <span class="sum">@DanhGia</span>
+
+                        </li>
+                    }
+                </ul>
+            </div>
+        @*</figure>*@
+    </div>
+</div>

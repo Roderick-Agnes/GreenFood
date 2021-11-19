@@ -1,0 +1,32 @@
+﻿@using GreenFood.Models
+
+@helper Truncate(String s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length) <text> ... </text>
+
+    }
+}
+
+@foreach (var i in Model)
+{
+<tr>
+    <td>@i.MaBL</td>
+    <td>@i.TenNguoiBL</td>
+    <td>@i.NoiDungBL</td>
+    <td>@i.THUCPHAM.TenThucPham</td>
+    <td>@Html.FormatValue(i.NgayBL, "{0:dd/MM/yyyy}")</td>
+    <td>@i.Email</td>
+    <td>@i.DanhGia <i class="fa fa-star" style="color:orange"></i></td>
+    <td><a href="@Url.Action("XoaBinhLuan",new { id = @i.MaBL})" class=" btn btn-primary" role="button">Xóa</a></td>
+</tr>
+}
+
+
+
+

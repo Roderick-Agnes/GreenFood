@@ -1,0 +1,259 @@
+﻿@using GreenFood.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var tong = Convert.ToInt32(@ViewBag.Tongs);
+    var thitTuoi = Convert.ToInt32(@ViewBag.Thittuois);
+    var traiCay = Convert.ToInt32(@ViewBag.Traicays);
+    var rauCu = Convert.ToInt32(@ViewBag.Raucus);
+    var haiSanTuoi = Convert.ToInt32(@ViewBag.Haisantuois);
+    var dauAnThucVat = Convert.ToInt32(@ViewBag.DauanTVs);
+    var sanPhamTuTrung = Convert.ToInt32(@ViewBag.SanPhamTuTrungs);
+
+}
+
+<html>
+<head>
+</head>
+<body>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4" style="padding-left:20px;">THỐNG KÊ DOANH THU</h1>
+
+        <main style="padding-top:25px;">
+            <div class="container-fluid px-4">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-bar me-1"></i>
+                                Biểu đồ doanh thu theo tháng
+                            </div></br>
+                            <div id="top_x_div" style=" height: 340px;"></div>
+
+                        </div>
+
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-danger text-white mb-4">
+                            <div class="card-body">TỔNG KẾT DOANH THU</div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <p class="small text-white stretched-link" href="#">@Html.FormatValue(Convert.ToDecimal(@tong), "{0:#,##0}")₫</p>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="col-xl-6">
+                        @Html.Action("PieChart", "TrangChu")
+                    </div>*@
+                </div>
+                <div class="row">
+                    @{
+                        var i = 0;
+                        var tmp = "";
+                    }
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        if (i == 1)
+                        {
+                            tmp = "bg-danger";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@thitTuoi), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (i == 2)
+                        {
+                            tmp = "bg-warning";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@traiCay), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (i == 3)
+                        {
+                            tmp = "bg-success";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@rauCu), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (i == 4)
+                        {
+                            tmp = "bg-secondary";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@haiSanTuoi), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (i == 5)
+                        {
+                            tmp = "bg-primary";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@dauAnThucVat), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (i == 6)
+                        {
+                            tmp = "bg-info";
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card @tmp  bg-gradient text-white mb-4">
+                                    <div class="card-body">@item.TenLoaiThucPham</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <p class="small text-white stretched-link">@Html.FormatValue(Convert.ToDecimal(@sanPhamTuTrung), "{0:#,##0}")₫</p>
+                                    </div>
+                                </div>
+                            </div>
+                            i = 0;
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawStuff);
+        var a1 = @ViewBag.Thittuoi;
+        var b1 = @ViewBag.Traicay;
+        var c1 = @ViewBag.Raucu;
+        var d1 = @ViewBag.Haisantuoi;
+        var e1 = @ViewBag.Dauanthucvat;
+        var f1 = @ViewBag.Cacloaisanphamtutrung;
+
+    var a2 = @ViewBag.Thittuoi2;
+        var b2 = @ViewBag.Traicay2;
+        var c2 = @ViewBag.Raucu2;
+        var d2 = @ViewBag.Haisantuoi2;
+        var e2 = @ViewBag.Dauanthucvat2;
+    var f2 = @ViewBag.Cacloaisanphamtutrung2;
+
+    var a3 = @ViewBag.Thittuoi3;
+        var b3 = @ViewBag.Traicay3;
+        var c3 = @ViewBag.Raucu3;
+        var d3 = @ViewBag.Haisantuoi3;
+        var e3 = @ViewBag.Dauanthucvat3;
+    var f3 = @ViewBag.Cacloaisanphamtutrung3;
+
+    var a4 = @ViewBag.Thittuoi4;
+        var b4 = @ViewBag.Traicay4;
+        var c4 = @ViewBag.Raucu4;
+        var d4 = @ViewBag.Haisantuoi4;
+        var e4 = @ViewBag.Dauanthucvat4;
+    var f4 = @ViewBag.Cacloaisanphamtutrung4;
+
+    var a5 = @ViewBag.Thittuoi5;
+        var b5 = @ViewBag.Traicay5;
+        var c5 = @ViewBag.Raucu5;
+        var d5 = @ViewBag.Haisantuoi5;
+        var e5 = @ViewBag.Dauanthucvat5;
+    var f5 = @ViewBag.Cacloaisanphamtutrung5;
+
+    var a6 = @ViewBag.Thittuoi6;
+        var b6 = @ViewBag.Traicay6;
+        var c6 = @ViewBag.Raucu6;
+        var d6 = @ViewBag.Haisantuoi6;
+        var e6 = @ViewBag.Dauanthucvat6;
+    var f6 = @ViewBag.Cacloaisanphamtutrung6;
+
+    var a7 = @ViewBag.Thittuoi7;
+        var b7 = @ViewBag.Traicay7;
+        var c7 = @ViewBag.Raucu7;
+        var d7 = @ViewBag.Haisantuoi7;
+        var e7 = @ViewBag.Dauanthucvat7;
+    var f7 = @ViewBag.Cacloaisanphamtutrung7;
+
+    var a8 = @ViewBag.Thittuoi8;
+        var b8 = @ViewBag.Traicay8;
+        var c8 = @ViewBag.Raucu8;
+        var d8 = @ViewBag.Haisantuoi8;
+        var e8 = @ViewBag.Dauanthucvat8;
+    var f8 = @ViewBag.Cacloaisanphamtutrung8;
+
+    var a9 = @ViewBag.Thittuoi9;
+        var b9 = @ViewBag.Traicay9;
+        var c9 = @ViewBag.Raucu9;
+        var d9 = @ViewBag.Haisantuoi9;
+        var e9 = @ViewBag.Dauanthucvat9;
+    var f9 = @ViewBag.Cacloaisanphamtutrung9;
+
+    var a10 = @ViewBag.Thittuoi10;
+        var b10 = @ViewBag.Traicay10;
+        var c10 = @ViewBag.Raucu10;
+        var d10 = @ViewBag.Haisantuoi10;
+        var e10 = @ViewBag.Dauanthucvat10;
+    var f10 = @ViewBag.Cacloaisanphamtutrung10;
+
+    var a11 = @ViewBag.Thittuoi11;
+        var b11 = @ViewBag.Traicay11;
+        var c11 = @ViewBag.Raucu11;
+        var d11 = @ViewBag.Haisantuoi11;
+        var e11 = @ViewBag.Dauanthucvat11;
+    var f11 = @ViewBag.Cacloaisanphamtutrung11;
+
+    var a12 = @ViewBag.Thittuoi12;
+        var b12 = @ViewBag.Traicay12;
+        var c12 = @ViewBag.Raucu12;
+        var d12 = @ViewBag.Haisantuoi12;
+        var e12 = @ViewBag.Dauanthucvat12;
+    var f12 = @ViewBag.Cacloaisanphamtutrung12;
+
+
+
+        function drawStuff() {
+            var data = google.visualization.arrayToDataTable([
+                ['\n', 'Thịt tươi', 'Trái cây', 'Rau củ', 'Hải sản tươi', 'Dầu ăn thực vật', 'Các loại sản phẩm từ trứng', { role: 'annotation' }],
+                ['Tháng 1', a1 , b1, c1, d1, e1, f1, ''],
+                ['Tháng 2', a2, b2, c2, d2, e2, f2, ''],
+                ['Tháng 3', a3, b3, c3, d3, e3, f3, ''],
+                ['Tháng 4', a4, b4, c4, d4, e4, f4, ''],
+                ['Tháng 5', a5, b5, c5, d5, e5, f5, ''],
+                ['Tháng 6', a6, b6, c6, d6, e6, f6, ''],
+                ['Tháng 7', a7, b7, c7, d7, e7, f7, ''],
+                ['Tháng 8', a8, b8, c8, d8, e8, f8, ''],
+                ['Tháng 9', a9, b9, c9, d9, e9, f9, ''],
+                ['Tháng 10', a10, b10, c10, d10, e10, f10, ''],
+                ['Tháng 11', a11, b11, c11, d11, e11, f11, ''],
+                ['Tháng 12', a12, b12, c12, d12, e12, f12, ''],
+
+            ]);
+
+            var options = {
+                width: 1550,
+                height: 340,
+                legend: { position: 'top', maxLines: 3 },
+                bar: { groupWidth: '75%' },
+                isStacked: true
+            };
+            var chart2 = new google.charts.Bar(document.getElementById('top_x_div'));
+            chart2.draw(data, options);
+
+        }
+    </script>
+</body>
+</html >

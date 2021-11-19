@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinBinhLuan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">TẤT CẢ BÌNH LUẬN CỦA THỰC PHẨM</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Danh sách bình luận</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách bình luận
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã Bình Luận</th>
+                            <th>Tên Người Bình Luận</th>
+                            <th>Nội Dung</th>
+                            <th>Tên Thực Phẩm</th>
+                            <th>Ngày Bình Luận</th>
+                            <th>Email</th>
+                            <th>Đánh Giá</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã Bình Luận</th>
+                            <th>Tên Người Bình Luận</th>
+                            <th>Nội Dung</th>
+                            <th>Tên Thực Phẩm</th>
+                            <th>Ngày Bình Luận</th>
+                            <th>Email</th>
+                            <th>Đánh Giá</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @Html.Action("BinhLuanSP", "BinhLuanDanhGia")
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

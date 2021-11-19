@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyTinNhan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">TIN NHẮN TỪ KHÁCH HÀNG</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Danh sách tin nhắn khách hàng</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách tin nhắn
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã tin nhắn</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Email</th>
+                            <th>Ngày nhận</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã tin nhắn</th>
+                            <th>Tên khách hàng</th>
+                            <th>Tiêu đề</th>
+                            <th>Nội dung</th>
+                            <th>Email</th>
+                            <th>Ngày nhận</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                        <tr>
+                            <td>@ii.MaTinNhan</td>
+                            <td>@ii.TenKH</td>
+                            <td>@ii.TieuDe</td>
+                            <td>@ii.NoiDungTuKH</td>
+                            <td>@ii.Email</td>
+                            <td>@Html.FormatValue(@ii.NgayNhan, "{0:dd/MM/yyyy}")</td>
+                            <td style="text-align:center;"><a href="@Url.Action("SendMail", new{ id = @ii.MaTinNhan})" class=" btn btn-primary" role="button">Trả lời</a></td>
+                            <td style="text-align:center;"><a href="@Url.Action("Delete", new{ id = @ii.MaTinNhan})" class=" btn btn-danger" role="button">Xóa</a></td>
+                        </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+

@@ -1,0 +1,18 @@
+﻿@using GreenFood.Models 
+
+@foreach (var sp in Model)
+{
+    
+    <div class="latest-product__item">
+        <div class="latest-product__item__pic">
+            <a href="@Url.Action("ChiTietThucPham", "GreenFood", new {id = sp.MaThucPham})"><img href="@Url.Action("ChiTietThucPham", "GreenFood", new {id = sp.MaThucPham})" src="~/Images/img/@sp.AnhBia" alt="" style="border-radius:10px 10px;"></a>
+        </div>
+        <div class="latest-product__item__text">
+            <a href="@Url.Action("ChiTietThucPham", "GreenFood", new {id = sp.MaThucPham})"><h6  class="tensp">@sp.TenThucPham</h6></a>
+            <span style="font-size:15px;color:red;">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+        </div>
+
+    </div>
+
+}        
+

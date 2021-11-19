@@ -1,0 +1,135 @@
+.tintuc-section{
+    margin-bottom: 50px;
+}
+.tintuc-section .container{
+    max-width: 1295px;
+}
+.title-tintuc{
+    text-align: center;
+}
+.title-tintuc h2{
+    font: 34px system-ui, "Segoe UI";
+    font-weight: bold;
+}
+.bg-tintuc{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.box-tintuc{
+    max-width: 305px;
+    max-height: 305px;
+    width: 305px;
+    height: 305px;
+    border-radius: 10px 10px;
+}
+.img-tt{
+    max-width: 305px;
+    max-height: 305px;
+    width: 305px;
+    height: 305px;
+    border-radius: 10px 10px;
+}
+.day-kh{
+    font: 12px system-ui, "Segoe UI";
+}
+.ion-ios-person, .ion-ios-calendar, .ion-ios-chatboxes{
+    animation: color-animate 5s linear infinite;
+}
+@keyframes color-animate{
+    0%{ color: #00b894; }
+    20%{ color: #00cec9; }
+    40%{ color: #0984e3; }
+    60%{ color: #6c5ce7; }
+    80%{ color: #e84393; }
+    100%{ color: #00b894; }
+}
+
+.footer-section{
+    background-color: #3BA66B;
+    height: 440px;
+    
+}
+.footer-section .container{
+    max-width:1290px;
+}
+.up-bg{
+    max-width: 100%;
+    background-color: transparent;
+
+}
+.box-f1{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    font: 17px system-ui, "Segoe UI";
+}
+.box-f11{
+    text-align: center;
+    margin-top: 100px;
+    font: 17px system-ui, "Segoe UI";
+}
+.box-f33{
+    text-align: center;
+}
+.box-f1 h4 span{
+    color:white;
+    font: 17px system-ui, "Segoe UI";
+
+    font-weight: bold;
+}
+.box-f2{
+    text-align: center;
+    font: 14px system-ui, "Segoe UI";
+    margin-top: 30px;
+}
+.box-f2 p{
+    color:white;
+    font: 14px system-ui, "Segoe UI";
+}
+.searchform1{
+    height:50px;
+    border: none;
+}
+.form-group input[type="text"]{
+    margin-top: 1px;
+    width:310px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.f-sm{
+    max-height: 50px;
+    width:92px;
+    height: 46px;
+    margin-top:1px;
+    background-color:orange;
+    margin-left:0px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: none;
+    color:white;
+    font: 14px system-ui, "Segoe UI";
+}
+.f-md{
+    width: 430px;
+    height:350px;
+    margin-top: 30px;
+}
+.box-f-1{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.box-f-2{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: -70px;
+}
+.sf-f{
+    width:287px;
+}
+.sf-f-1 input[type="text"]{
+
+    border-radius: 30px 2px red;
+}
+.navbar .container{
+    max-width: 1295px;
+}

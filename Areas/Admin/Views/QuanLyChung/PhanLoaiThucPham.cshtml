@@ -1,0 +1,138 @@
+﻿@using GreenFood.Models
+@model IEnumerable<GreenFood.Models.CHITIETTHUCPHAM>
+@{
+    ViewBag.Title = "PhanLoaiThucPham";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        @foreach (var i in Model) {
+            var maLoai = i.MaLoaiThucPham;
+            if (i.MaLoaiThucPham == maLoai)
+            {
+                <h1 class="mt-4">@i.LOAITHUCPHAM.TenLoaiThucPham.ToUpper()</h1>
+                break;
+            }
+
+        }
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Thông tin thực phẩm</li>
+            </ol>
+            @foreach (var i in Model)
+                {
+                
+                    <div class="mb-4">
+                        <a href="@Url.Action("ChinhSuaLoaiThucPham", "NhapKho", new { id = @i.MaLoaiThucPham })" class="btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Chỉnh sửa thông tin</a>
+                        <a href="@Url.Action("XoaLoaiThucPham", "NhapKho", new { id = @i.MaLoaiThucPham })" class="btn btn-warning" role="button" style="color:white"><i class="fas fa-trash-alt"></i> Xóa tất cả loại thực phẩm này</a>
+                    </div>
+                    break;
+                }
+            <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Bảng dữ liệu: <a style="color:red;">@ViewBag.TenLoaiThucPham.ToUpper()</a>
+                    </div>
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>Mã thực phẩm</th>
+                                    <th>Mã loại</th>
+                                    <th>Tên</th>
+                                    <th>Giá</th>
+                                    <th>Mô tả</th>
+                                    <th>Trọng lượng</th>
+                                    <th>Ảnh bìa</th>
+                                    <th>Hạn sử dụng</th>
+                                    <th>Số lượng</th>
+                                    <th>Số lượng đã bán</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Mã thực phẩm</th>
+                                    <th>Mã loại</th>
+                                    <th>Tên</th>
+                                    <th>Giá</th>
+                                    <th>Mô tả</th>
+                                    <th>Trọng lượng</th>
+                                    <th>Ảnh bìa</th>
+                                    <th>Hạn sử dụng</th>
+                                    <th>Số lượng</th>
+                                    <th>Số lượng đã bán</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+
+                                @helper Truncate(String s, int length)
+                                {
+                                    if (s.Length < length)
+                                    {
+                                        @s
+                                    }
+                                    else
+                                    {
+                                        @s.Substring(0, length) <text> ... </text>
+
+                                    }
+                                }
+
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>@i.MaThucPham</td>
+                                        <td>@i.MaLoaiThucPham</td>
+                                        <td href="">@i.TenThucPham</td>
+                                        <td>@Html.FormatValue(@i.Gia, "{0:#,##0}")₫</td>
+                                        <td>@Truncate(i.Mota, 30)</td>
+                                        <td>
+                                            @if (@i.MaLoaiThucPham == 1 || @i.MaLoaiThucPham == 4)
+                                            {
+                                                <p>@i.TrongLuong Kg</p>
+                                            }
+                                            else if (@i.MaLoaiThucPham == 2 || @i.MaLoaiThucPham == 3)
+                                            {
+                                                <p>@i.TrongLuong g</p>
+                                            }
+                                            else if (@i.MaLoaiThucPham == 5)
+                                            {
+                                                <p>@i.TrongLuong lít</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@i.TrongLuong hộp 6 trứng</p>
+                                            }
+                                        </td>
+                                        <td><img src="~/Images/img/@i.AnhBia" style="width:50px" /></td>
+                                        <td>@Html.FormatValue(i.HanSuDung, "{0:dd/MM/yyyy}")</td>
+                                        <td>@i.SoLuongBan</td>
+                                        <td>@i.SoLuongDaBan</td>
+                                        <td><a href="@Url.Action("EditThucPham",new { id = @i.MaThucPham})" class=" btn btn-warning" role="button">Sửa</a></td>
+                                        <td><a href="@Url.Action("DetailsThucPham", new{ id = @i.MaThucPham})" class=" btn btn-primary" role="button">Chi tiết</a></td>
+                                        <td><a href="@Url.Action("DeleteThucPham", new{ id = @i.MaThucPham})" class=" btn btn-danger" role="button">Xóa</a></td>
+                                        
+
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                
+                </div>
+            
+            <p>@Html.ActionLink("Trở về", "QuanLyThucPham")</p>
+        </div>
+</main>
+
+
+
+

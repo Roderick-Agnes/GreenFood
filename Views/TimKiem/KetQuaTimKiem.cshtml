@@ -1,0 +1,51 @@
+﻿@using GreenFood.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CHITIETTHUCPHAM>
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="container" style="padding:50px;">
+<h2 font-weight:normal;color:black">Kết quả tìm kiếm</h2>
+<div>@ViewBag.ThongBao</div>
+<hr />
+<div class="x_content">
+    <div class="table-responsive">
+        <table class="table table-striped jambo_table bulk_action">
+            <thead>
+                <tr class="headings">
+                    <th class="column-title">Tên thực phẩm</th>
+                    <th class="column-title">Ảnh bìa</th>
+                    <th class="column-title"></th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="even pointer">
+                        <td> @item.TenThucPham </td>
+                        <td> <img src="~/Images/img/@item.AnhBia" style="width:60px;height:auto" /></td>
+                        <td><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = @item.MaThucPham })" class="btn btn-success">Chi tiết</a></td>
+                    </tr>
+                }
+            </tbody>
+            <tr>
+            </tr>
+        </table>
+        <div class="MenuTrang btn" >
+            @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+        </style>
+    </div>
+</div>
+</div>
+
+

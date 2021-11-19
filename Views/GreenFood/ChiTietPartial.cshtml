@@ -1,0 +1,359 @@
+﻿@using GreenFood.Models
+<link href="~/Content/ChiTietSanPham/detail.css" rel="stylesheet">
+
+<link href="~/Content/ChiTietSanPham/global.css" rel="stylesheet">
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<section id="shop_detail">
+    <div class="container">
+        <div class="row">
+            <div class="shop_detail_1 clearfix">
+                <div class="col-sm-6"  style="width:570px">
+                    <div class="center_detail_2_left clearfix">
+                        <div class="carousel slide article-slide" id="article-photo-carousel">
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner cont-slider">
+
+                                <div class="item active">
+                                    <div class="mag">
+                                        <div class="magnify"><div class="magnify"><img data-toggle="magnify" src="~/Images/img/@Model.AnhBia" alt="">@*<div class="magnify-large" style="background: url(../../Images/img/@Model.AnhBia) no-repeat;"></div></div><div class="magnify-large">*@</div></div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="mag">
+                                        <div class="magnify"><div class="magnify"><img data-toggle="magnify" src="~/Images/img/@Model.AnhBia" alt=""></div></div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="mag">
+                                        <div class="magnify"><div class="magnify"><img data-toggle="magnify" src="~/Images/img/@Model.AnhBia" alt=""></div></div>
+                                    </div>
+                                </div>
+                                <div class="item ">
+                                    <div class="mag">
+                                        <div class="magnify"><div class="magnify"><img data-toggle="magnify" src="~/Images/img/@Model.AnhBia" alt=""></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                                    <img alt="" src="~/Images/img/@Model.AnhBia">
+                                </li>
+                                <li class="" data-slide-to="1" data-target="#article-photo-carousel">
+                                    <img alt="" src="~/Images/img/@Model.AnhBia">
+                                </li>
+                                <li class="" data-slide-to="2" data-target="#article-photo-carousel">
+                                    <img alt="" src="~/Images/img/@Model.AnhBia">
+                                </li>
+                                <li class="" data-slide-to="3" data-target="#article-photo-carousel">
+                                    <img alt="" src="~/Images/img/@Model.AnhBia">
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6" style="width:570px">
+                    <div class="center_detail_2_right clearfix">
+                        
+                        @if(Model.THUCPHAM.CheckSale == 1) { 
+                            <h3 class="mgt"> @Model.TenThucPham <span style="color:red;font-size:13px">( -@Model.THUCPHAM.GiamGia% )</span></h3>
+                        }
+                        else{
+                            <h3 class="mgt"> @Model.TenThucPham</h3>
+                        }
+                        <h5 class="col_1">
+
+                            @{
+                                double TrungBinhDanhGia = 0;
+                                if (ViewBag.SoLuongDanhGia != 0)
+                                {
+                                    TrungBinhDanhGia = Math.Round((double)(1.0 * ViewBag.TongDanhGia * 10 / ViewBag.SoLuongDanhGia));
+                                }
+
+                                TrungBinhDanhGia /= 10;
+                            }
+                            @{ int star = 0;}
+                            @for (; star < @Math.Floor((double)TrungBinhDanhGia); star++)
+                            {
+                                <i class="fa fa-star"></i>
+
+                            }
+                            @if (star < @Math.Ceiling((double)TrungBinhDanhGia))
+                            {
+                                <i class="fa fa-star-half-full"></i>
+                                star++;
+                            }
+                            @for (; star < 5; star++)
+                            {
+                                <span class="fa fa-star-o"></span>
+                            }
+                            <a>( @ViewBag.SoLuongDanhGia đánh giá )</a>
+                        </h5>
+                        @if(Model.THUCPHAM.CheckSale == 1) { 
+                            <h4><span class="span_1">@string.Format("{0:#,##0,0}", @Model.Gia)₫</span> <span class="span_2 col_1">@string.Format("{0:#,##0,0}", (decimal)(@Model.Gia - (@Model.THUCPHAM.GiamGia * Model.Gia / 100)))₫</span></h4>
+                        }
+                        else{
+                            <h4><span class="span_2 col_1">@string.Format("{0:#,##0,0}", @Model.Gia)₫</span></h4>
+                        }
+                        
+                        
+                            
+                            @if (@Model.THUCPHAM.MaLoaiThucPham == 1 || @Model.THUCPHAM.MaLoaiThucPham == 4)
+                            {
+                                <p>Trọng lượng: @Model.TrongLuong Kg</p>
+                            }
+                            else if (@Model.THUCPHAM.MaLoaiThucPham == 2 || @Model.THUCPHAM.MaLoaiThucPham == 3)
+                            {
+                                <p>Trọng lượng: @Model.TrongLuong g</p>
+                            }
+                            else if (@Model.THUCPHAM.MaLoaiThucPham == 5)
+                            {
+                                <p>Trọng lượng: @Model.TrongLuong lít</p>
+                            }
+                            else{
+                                <p>Trọng lượng: Hộp @Model.TrongLuong trứng</p>
+                            }
+                        
+                        <p>Người đăng: @Model.THUCPHAM.UserName</p>
+                        <p>Ngày đăng: @Html.FormatValue(@Model.THUCPHAM.NgayDang, "{0:dd/MM/yyyy}")</p>
+                        <p>Hạn sử dụng: @Html.FormatValue(@Model.HanSuDung, "{0:dd/MM/yyyy}")</p>
+
+                        <hr>
+                        @*<h4>Available Options</h4>*@
+                        <div class="pd_n clearfix">
+                            @*<h5 class="bold">Color <span class="col_2">*</span></h5>
+                            <ul>
+                                <li class="bg_1 act"></li>
+                                <li class="bg_2"></li>
+                                <li class="bg_3"></li>
+                                <li class="bg_4"></li>
+                                <li class="bg_5"></li>
+                            </ul>*@
+                        </div>
+                        @*<h5>Số lượng:</h5>
+                        <div class="input-group number-spinner">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                            </span>
+                            <input type="text" class="form-control text-center" value="1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                            </span>
+                        </div>*@
+                        <div class="pd_n1 clearfix">
+                            <h4><a class="button" href="@Url.Action("ThemGioHang", "GioHang", new {mtp = Model.MaThucPham, url = Request.Url.ToString()})">Thêm vào giỏ</a></h4>
+                            @*<h4><a class="button_1" href="#"> ADD TO WISHLIST</a></h4>*@
+                        </div>
+                        <ul class="social-network social-circle">
+                            <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="product_detail_1 clearfix" style="margin-top:150px;">
+                <ul class="nav nav-tabs tab_1">
+                    <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-globe"></i> Đánh giá</a></li>
+                    @*<li class=""><a data-toggle="tab" href="#menu1"><i class="fa fa-photo"></i> Đánh giá</a></li>*@
+                    <li class=""><a data-toggle="tab" href="#menu2"><i class="fa fa-cog"></i> Mô tả</a></li>
+                </ul>
+                <div class="tab-content clearfix container" style="">
+                    <div id="home" class="tab-pane fade clearfix active in">
+                        <div class="click clearfix">
+                            <div class="col-sm-12">
+                                <div class="menu1i clearfix">
+                                    <div class="menu1i1 clearfix" style="margin-bottom:20px;">
+
+                                        @Html.Action("TongHopDanhGia", "DanhGiaBinhLuan", new { id = @Model.MaThucPham })
+
+                                        @Html.Action("FormDanhGiaBinhLuan", "DanhGiaBinhLuan", new { id = @Model.MaThucPham })
+                                    </div>
+                                    <h3>Nhận xét</h3>
+                                    @Html.Action("InfoBinhLuanDanhGia", "DanhGiaBinhLuan", new { id = @Model.MaThucPham })
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade clearfix">
+                        <div class="click clearfix">
+                            <div class="col-sm-12">
+                                <div class="home_i">
+                                    <p>@Html.Raw(@Model.Mota.ToString().Replace("\n", "<p></p>"))</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        /*****Fixed Menu******/
+        var secondaryNav = $('.cd-secondary-nav'),
+            secondaryNavTopPosition = secondaryNav.offset().top;
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > secondaryNavTopPosition) {
+                secondaryNav.addClass('is-fixed');
+            } else {
+                secondaryNav.removeClass('is-fixed');
+            }
+        });
+
+    });
+</script>
+
+<script>
+
+    !function ($) {
+
+        "use strict"; // jshint ;_;
+
+
+        /* MAGNIFY PUBLIC CLASS DEFINITION
+         * =============================== */
+
+        var Magnify = function (element, options) {
+            this.init('magnify', element, options)
+        }
+
+        Magnify.prototype = {
+
+            constructor: Magnify
+
+            , init: function (type, element, options) {
+                var event = 'mousemove'
+                    , eventOut = 'mouseleave';
+
+                this.type = type
+                this.$element = $(element)
+                this.options = this.getOptions(options)
+                this.nativeWidth = 0
+                this.nativeHeight = 0
+
+                this.$element.wrap('<div class="magnify" \>');
+                this.$element.parent('.magnify').append('<div class="magnify-large" \>');
+                this.$element.siblings(".magnify-large").css("background", "url('" + this.$element.attr("src") + "') no-repeat");
+
+                this.$element.parent('.magnify').on(event + '.' + this.type, $.proxy(this.check, this));
+                this.$element.parent('.magnify').on(eventOut + '.' + this.type, $.proxy(this.check, this));
+            }
+
+            , getOptions: function (options) {
+                options = $.extend({}, $.fn[this.type].defaults, options, this.$element.data())
+
+                if (options.delay && typeof options.delay == 'number') {
+                    options.delay = {
+                        show: options.delay
+                        , hide: options.delay
+                    }
+                }
+
+                return options
+            }
+
+            , check: function (e) {
+                var container = $(e.currentTarget);
+                var self = container.children('img');
+                var mag = container.children(".magnify-large");
+
+                // Get the native dimensions of the image
+                if (!this.nativeWidth && !this.nativeHeight) {
+                    var image = new Image();
+                    image.src = self.attr("src");
+
+                    this.nativeWidth = image.width;
+                    this.nativeHeight = image.height;
+
+                } else {
+
+                    var magnifyOffset = container.offset();
+                    var mx = e.pageX - magnifyOffset.left;
+                    var my = e.pageY - magnifyOffset.top;
+
+                    if (mx < container.width() && my < container.height() && mx > 0 && my > 0) {
+                        mag.fadeIn(100);
+                    } else {
+                        mag.fadeOut(100);
+                    }
+
+                    if (mag.is(":visible")) {
+                        var rx = Math.round(mx / container.width() * this.nativeWidth - mag.width() / 2) * -1;
+                        var ry = Math.round(my / container.height() * this.nativeHeight - mag.height() / 2) * -1;
+                        var bgp = rx + "px " + ry + "px";
+
+                        var px = mx - mag.width() / 2;
+                        var py = my - mag.height() / 2;
+
+                        mag.css({ left: px, top: py, backgroundPosition: bgp });
+                    }
+                }
+
+            }
+        }
+
+
+        /* MAGNIFY PLUGIN DEFINITION
+         * ========================= */
+
+        $.fn.magnify = function (option) {
+            return this.each(function () {
+                var $this = $(this)
+                    , data = $this.data('magnify')
+                    , options = typeof option == 'object' && option
+                if (!data) $this.data('tooltip', (data = new Magnify(this, options)))
+                if (typeof option == 'string') data[option]()
+            })
+        }
+
+        $.fn.magnify.Constructor = Magnify
+
+        $.fn.magnify.defaults = {
+            delay: 0
+        }
+
+
+        /* MAGNIFY DATA-API
+         * ================ */
+
+        $(window).on('load', function () {
+            $('[data-toggle="magnify"]').each(function () {
+                var $mag = $(this);
+                $mag.magnify()
+            })
+        })
+
+    }(window.jQuery);
+</script>
+
+<script>
+    $(document).on('click', '.number-spinner button', function () {
+        var btn = $(this),
+            oldValue = btn.closest('.number-spinner').find('input').val().trim(),
+            newVal = 0;
+
+        if (btn.attr('data-dir') == 'up') {
+            newVal = parseInt(oldValue) + 1;
+        } else {
+            if (oldValue > 1) {
+                newVal = parseInt(oldValue) - 1;
+            } else {
+                newVal = 1;
+            }
+        }
+        btn.closest('.number-spinner').find('input').val(newVal);
+    });
+</script>

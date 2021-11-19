@@ -1,0 +1,80 @@
+﻿@model GreenFood.Models.BINHLUAN
+
+@{
+    ViewBag.Title = "XoaBinhLuan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Bình Luận</h2>
+
+<h3>Bạn có muốn xóa nội dung này chứ?</h3>
+<div class="container">
+    <h4>BÌNH LUẬN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Người binh luận:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiBL)
+        </dd>
+
+        <dt>
+            Nội dung bình luận:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungBL)
+        </dd>
+
+        <dt>
+            Tên thực phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THUCPHAM.TenThucPham)
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/img/@ViewBag.AnhBia" width="120">
+        </dd>
+
+        <dt>
+            Ngày bình luận:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayBL)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Đánh giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhGia)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "ThongTinBinhLuan",new { id = @Model.MaThucPham })
+        </div>
+    }
+</div>

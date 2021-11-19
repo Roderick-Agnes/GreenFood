@@ -1,0 +1,50 @@
+﻿@using GreenFood.Models
+
+@helper Truncate(String s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length) <text> ... </text>
+
+    }
+}
+
+@foreach (var i in Model)
+{
+    <tr>
+        <td>@i.MaThucPham</td>
+        <td>@i.MaLoaiThucPham</td>
+        <td href="">@i.TenThucPham</td>
+        <td>@Html.FormatValue(@i.Gia, "{0:#,##0}")₫</td>
+        <td>@Truncate(i.Mota, 50)</td>
+        <td>
+            @if (@i.MaLoaiThucPham == 1 || @i.MaLoaiThucPham == 4)
+            {
+                <p>@i.TrongLuong Kg</p>
+            }
+            else if (@i.MaLoaiThucPham == 2 || @i.MaLoaiThucPham == 3)
+            {
+                <p>@i.TrongLuong g</p>
+            }
+            else if (@i.MaLoaiThucPham == 5)
+            {
+                <p>@i.TrongLuong lít</p>
+            }
+            else
+            {
+                <p>Hộp @i.TrongLuong trứng</p>
+            }
+        </td>
+        <td><img src="~/Images/img/@i.AnhBia" style="width:50px" /></td>
+        <td>@Html.FormatValue(i.HanSuDung, "{0:dd/MM/yyyy}")</td>
+        <td>@i.SoLuongBan</td>
+        <td>@i.SoLuongDaBan</td>
+        <td><a href="@Url.Action("ThongTinBinhLuan",new { id = @i.MaThucPham})" class=" btn btn-warning" role="button">Thông Tin Binh Luận</a></td>
+    </tr>
+}
+
+

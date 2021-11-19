@@ -1,0 +1,13 @@
+﻿@using GreenFood.Models
+@{
+    ViewBag.Title = "DoiMatKhauTC";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{
+    NHANVIEN qt = (NHANVIEN)Session["NHANVIEN"];
+}
+<h2>ĐỔI MẬT KHẨU THÀNH CÔNG</h2>
+<div style="padding-top: 20px;">
+    @Html.ActionLink("Trở lại trang chủ", "ReturnLogin", "InAndOut", new { id = qt.MaNV})
+</div>
+

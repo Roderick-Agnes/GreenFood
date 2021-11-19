@@ -1,0 +1,51 @@
+﻿@model GreenFood.Models.CHUONGTRINHKHUYENMAI
+
+@{
+    ViewBag.Title = "DeleteKhuyenMai";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top: 50px;">
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>CHƯƠNG TRÌNH KHUYẾN MÃI</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên khuyến mãi:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenKM)
+            </dd>
+
+            <dt>
+                Thời gian bắt đầu:
+            </dt>
+
+            <dd>
+                @Html.FormatValue(Model.ThoiGianBD, "{0:dd/MM/yyyy}")
+            </dd>
+
+            <dt>
+                Thời gian kết thúc:
+            </dt>
+
+            <dd>
+                @Html.FormatValue(Model.ThoiGianKT, "{0:dd/MM/yyyy}")
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-success" /> |
+                @Html.ActionLink("Trở về", "QuanLyKhuyenMai")
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@using GreenFood.Models
+@{
+    THANHVIEN tv = (THANHVIEN)Session["UserName"];
+}
+@if (Session["UserName"] == null)
+{
+    @*<li><a href="@Url.Action("DangKy", "User")"><span class="glyphicon glyphicon-user"></span> Đăng ký</a></li>*@
+    <a class="dropdown-item" href="~/User/DangNhap?id=1">Đăng nhập</a>
+    <a class="dropdown-item" href="@Url.Action("DangKy", "User")" style="border-top:1px solid #F2F2F2">Đăng ký</a>
+    <div class="fb-like"
+         data-share="true"
+         data-width="450"
+         data-show-faces="true">
+    </div>
+}
+else
+{
+    <a class="dropdown-item" href="#">@tv.HoTenTV</a>
+    <a class="dropdown-item" href="@Url.Action("DangXuat", "User")" style="border-top:1px solid #F2F2F2"> Đăng xuất</a>
+}
+

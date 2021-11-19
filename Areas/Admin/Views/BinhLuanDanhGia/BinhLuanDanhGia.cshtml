@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "BinhLuanDanhGia";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">BẢNG BÌNH LUẬN</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Phân loại bình luận của từng thực phẩm</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách thực phẩm
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Mã thực phẩm</th>
+                            <th>Mã loại</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Trọng lượng</th>
+                            <th>Ảnh bìa</th>
+                            <th>Hạn sử dụng</th>
+                            <th>Số lượng</th>
+                            <th>Số lượng đã bán</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Mã thực phẩm</th>
+                            <th>Mã loại</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Trọng lượng</th>
+                            <th>Ảnh bìa</th>
+                            <th>Hạn sử dụng</th>
+                            <th>Số lượng</th>
+                            <th>Số lượng đã bán</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @Html.Action("TatCaBinhLuan", "BinhLuanDanhGia")
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

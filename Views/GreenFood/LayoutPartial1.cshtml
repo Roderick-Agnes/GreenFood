@@ -1,0 +1,17 @@
+﻿<div class="sidebar">
+    @Html.Action("DanhMucPartial", "GreenFood")
+
+    <div class="sidebar__item">
+        <div class="latest-product__text">
+            <h4>Sản phẩm mới nhất</h4>
+            <div class="latest-product__slider owl-carousel">
+                <div class="latest-prdouct__slider__item">
+                    @Html.Action("SanPhamMoiNhat", "GreenFood")
+                    <div class="op3" style="margin-top:0px;margin-right:150px;">
+                        <a href="@Url.Action("SanPhamGrid","GreenFood")">Xem thêm >></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

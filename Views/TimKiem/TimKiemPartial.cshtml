@@ -1,0 +1,13 @@
+﻿@using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+{
+    <div class="form-group sf-f-1 d-flex">
+            <input type="text" class="form-control pl-3" name="txtTimKiem" placeholder="Bạn cần tìm gì?">
+            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+        </div>
+    @*{
+        <form>
+            @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @style = "width:200px;", @placeholder = "tìm kiếm..." })
+            <input type="submit" value="">
+        </form>
+    }*@
+}

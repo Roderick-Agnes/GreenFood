@@ -1,0 +1,111 @@
+﻿@using GreenFood.Models
+@{
+    ViewBag.Title = "QuanLyNhanVien";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">DANH SÁCH NHÂN VIÊN</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Bảng nhân viên</li>
+        </ol>
+        <div class=" mb-4">
+            <a href="@Url.Action("Create","QuanLyNhanVien")" class=" btn btn-warning" role="button" style="color:white"><i class="fas fa-edit"></i> Thêm nhân viên</a>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Bảng danh sách nhân viên
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Chức vụ</th>
+                            <th>Điện thoại</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                            <th>Tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Link Facebook</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Chức vụ</th>
+                            <th>Điện thoại</th>
+                            <th>Giới tính</th>
+                            <th>Địa chỉ</th>
+                            <th>Email</th>
+                            <th>Tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Link Facebook</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var ii in Model)
+                        {
+                        <tr>
+                            <td>@ii.HoTenNV</td>
+                            @if (ii.MaPQ == 1)
+                            {
+                                <td>Admin</td>
+                            }
+                            else if (ii.MaPQ == 2)
+                            {
+                                <td>Nhân viên</td>
+                            }
+                            else if (ii.MaPQ == 3)
+                            {
+                                <td>Shipper</td>
+                            }
+                            <td>@ii.DienThoai</td>
+                            @if (ii.GioiTinh == "Male")
+                            {
+                                <td>Nam</td>
+                            }
+                            else
+                            {
+                                <td>Nữ</td>
+                            }
+                            <td>@ii.DiaChi</td>
+                            <td>@ii.Email</td>
+                            <td>@ii.UserName</td>
+                            <td>@ii.Pw</td>
+                            @if (@ii.Facebook == "" || @ii.Facebook == null)
+                            {
+                                <td>Chưa cập nhật</td>
+                            }
+                            else
+                            {
+                                <td>@ii.Facebook</td>
+                            }
+
+
+                            <td style="text-align:center;"><a href="@Url.Action("Edit",new { id = @ii.MaNV})" class=" btn btn-warning" role="button" style="color:white">Sửa</a></td>
+                            <td style="text-align:center;"><a href="@Url.Action("Details", new{ id = @ii.MaNV})" class=" btn btn-primary" role="button">Thông tin</a></td>
+                            <td style="text-align:center;"><a href="@Url.Action("Delete", new{ id = @ii.MaNV})" class=" btn btn-danger" role="button">Xóa</a></td>
+
+                        </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

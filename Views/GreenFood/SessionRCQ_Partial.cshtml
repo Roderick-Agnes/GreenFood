@@ -1,0 +1,79 @@
+﻿@using GreenFood.Models;
+<div class="container">
+    <div class="row op-2-op">
+        <div class="col-md-9">
+            <div class="option-3">
+                <div class="row">
+                    @foreach (var sp in Model)
+                    {
+                        if (sp.THUCPHAM.CheckSale == 1)
+                            {
+                            <div class="col-md-3 box-sp-op">
+                                <div class="box-img-uu-dai img-hover-zoom box-op">
+                                    <img src="~/Images/img/@sp.AnhBia" class="img-op" />
+                                    <ul class="product-links">
+                                        <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-bag"></i> Thêm vào giỏ</a></li>
+                                        <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i> Chi tiết</a></li>
+                                    </ul>
+                                    <span class="gg"><p> - @sp.THUCPHAM.GiamGia% </p></span>
+                                </div>
+                                <div class="box-tensp">
+                                    <a href="#" class="tensp">@sp.TenThucPham</a>
+                                </div>
+                                <div class="row">
+                                    <span class="col-md-6 giakm">@string.Format("{0:#,##0,0}", (decimal)@sp.Gia - (decimal)(@sp.THUCPHAM.GiamGia*sp.Gia/100))₫</span>
+                                    <span class="col-md-6 giagoc">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                                </div>
+                            </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-3 box-sp-op">
+                                <div class="box-img-uu-dai img-hover-zoom box-op">
+                                    <img src="~/Images/img/@sp.AnhBia" class="img-op" />
+                                    <ul class="product-links">
+                                        <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-bag"></i> Thêm vào giỏ</a></li>
+                                        <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i> Chi tiết</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box-tensp">
+                                    <a href="#" class="tensp">@sp.TenThucPham</a>
+                                </div>
+                                <div class="row">
+                                    <span class="col-md-12 giaban">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                                </div>
+                            </div>
+                            }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="option-4 op-2-op-2">
+                <div class="link-option">
+                    <div class="op1">
+                        <a href="#">Rau củ quả</a><br>
+                    </div>
+                    <div class="op2">
+                        <ul>
+                            <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=2">Trái cây</a></li>
+
+                            <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=3">Rau củ</a></li>
+
+                            <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=1">Thịt tươi</a></li>
+
+                            <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=4">Hải sản</a></li>
+
+                            <li><a href="/GreenFood/DanhMuc?iMaLoaiTP=5">Dầu ăn thực vật</a></li>
+                        </ul>
+                    </div>
+                    <div class="op3">
+                        <a href="/GreenFood/DanhMuc?iMaLoaiTP=3">Mua sắm ngay bây giờ!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@using GreenFood.Models
+
+<div class="row box-top-2">
+    <div class="col-md-12">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                if (item != null)
+                {
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 box-uu-dai container-fluid">
+                        <div class="title" style="width:500px; margin-left:-50px;margin-top:25px;">
+                            <a href="#" class="title-uu-dai container-fluid" title="@item.TenKM" style="font-size:26px;"><img src="~/Images/svg-hot.png" class="svg-hot" /> @item.TenKM</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        @*@foreach (var item in Model)
+        {
+            if (item.Up == 1)
+            {
+                @Html.Action("SanPhamKhuyenMaiPartial", "UpKhuyenMai")
+            }
+        }*@
+        @Html.Action("SanPhamKhuyenMaiPartial", "UpKhuyenMai")
+    </div>
+</div>

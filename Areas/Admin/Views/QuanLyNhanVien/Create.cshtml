@@ -1,0 +1,89 @@
+﻿@model GreenFood.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding:50px;">
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>THÊM NHÂN VIÊN MỚI</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Họ và tên:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" required name="sTenNhanVien" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Điện thoại:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="tel" maxlength="11" required name="sDienThoai" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Giới tính:</label>
+        <div class="col-md-10">
+            <div class="row" style="width:250px;">
+                <div class="col-5" style="font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Male")  Nam</div>
+                <div class="col-7" style="font-size:20px">@Html.RadioButtonFor(model => model.GioiTinh, "Female")  Nữ</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Địa chỉ:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" required name="sDiaChi"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Email:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="email" required name="sEmail"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tài khoản:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" required name="sTaiKhoan"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mật khẩu:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="password" required name="sMatKhau" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Chọn chức vụ mới:</label>
+        <div class="col-md-10">
+            @Html.DropDownList("MaPQ")
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Link Facebook:</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="sFacebook" />
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top:10px;">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div style="margin-top:10px;">
+    @Html.ActionLink("Back to List", "QuanLyNhanVien")
+</div>
+</div>

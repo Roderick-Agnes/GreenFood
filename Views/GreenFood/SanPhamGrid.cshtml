@@ -1,0 +1,97 @@
+﻿@using GreenFood.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<CHITIETTHUCPHAM>
+@{
+    ViewBag.Title = "SanPhamGrid";
+    Layout = "~/Views/Shared/_UseLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/jquery-ui.min.css" type="text/css">
+
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="~/Content/SanPhamGrid/css/style.css" type="text/css">
+
+<div class="">
+    <div class="row">
+        <div class="col-lg-4 col-md-5">
+            <div class="filter__sort">
+                <span>Sắp xếp</span>
+                <select>
+                    <option value="0">Mặc định</option>
+                    <option value="0">Default</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="filter__found">
+
+                <h4><span></span>Sản phẩm mới nhất</h4>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-3">
+            <div class="filter__option">
+                <span class="icon_grid-2x2"></span>
+                <span class="icon_ul"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var sp in Model)
+    {
+        if (sp.THUCPHAM.CheckSale == 1)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item shadow glyphicon-sort-by-order-alt" style="border-radius: 10px 10px;">
+                    <div class="product__item__pic set-bg img-hover-zoom" data-setbg="/Images/Demo-UuDaiTrongTuan/sp2.jpg" style="border-radius: 10px 10px;">
+                        <img src="~/Images/img/@sp.AnhBia" class="" style="border-top-left-radius: 10px;border-top-right-radius: 10px;" />
+                        <ul class="product__item__pic__hover">
+
+                            <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i></a></li>
+                            <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text" style="margin-top:-20px;height:100px;">
+                        <div class="box-tensp">
+                            <a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })" class="tensp">@sp.TenThucPham</a>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-6 giakm">@string.Format("{0:#,##0,0}", (decimal)@sp.Gia - (decimal)(@sp.THUCPHAM.GiamGia * sp.Gia / 100))₫</span>
+                            <span class="col-md-6 giagoc">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else { 
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item shadow glyphicon-sort-by-order-alt" style="border-radius: 10px 10px;">
+                    <div class="product__item__pic set-bg img-hover-zoom" data-setbg="/Images/Demo-UuDaiTrongTuan/sp2.jpg" style="border-radius: 10px 10px;">
+                        <img src="~/Images/img/@sp.AnhBia" class="" style="border-top-left-radius: 10px;border-top-right-radius: 10px;" />
+                        <ul class="product__item__pic__hover">
+
+                            <li><a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })"><i class="fa fa-search"></i></a></li>
+                            <li><a href="@Url.Action("ThemGioHang", "GioHang", new { mtp = sp.MaThucPham, url = Request.Url.ToString() })"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text" style="margin-top:-20px;height:100px;">
+                        <div class="box-tensp">
+                            <a href="@Url.Action("ChiTietThucPham", "GreenFood", new { id = sp.MaThucPham })" class="tensp">@sp.TenThucPham</a>
+                        </div>
+                        <div class="row">
+                            <span class="col-md-12 giaban">@string.Format("{0:#,##0,0}", @sp.Gia)₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+<div class="product__pagination">
+    @Html.PagedListPager(Model, page => Url.Action("SanPhamGrid", new { page = page }))
+</div>
+

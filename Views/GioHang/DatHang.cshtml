@@ -1,0 +1,373 @@
+﻿@using GreenFood.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_Layout_Temp.cshtml";
+}
+<link rel="stylesheet" href="~/Styles/Site.css" type="text/css" />
+<h2 style="text-align:center; margin-top: 50px" ">THÔNG TIN ĐẶT HÀNG</h2>
+@{
+    THANHVIEN kh = (THANHVIEN)Session["UserName"];
+}
+
+@*<div class="container">
+
+    <table class="container-fluid">
+        <tr style="height:40px">
+            <td><h3>Chọn phương thức thanh toán</h3></td>
+            <td></td>
+        </tr>
+        <tr>
+
+            <td>
+                <label><input type="radio" class="btn_radio" id="rdoCash" GroupName="paymentMethod" name="paymentMethods" value="CASH" />Thanh toán online bằng tiền mặt</label>
+
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="radio" class="btn_radio" id="rdoNl" GroupName="paymentMethod" name="paymentMethods" value="NL" />
+                    Thanh toán bằng Ví điện tử NgânLượng
+                </label><br>
+                <div id="nganluongContent" class="boxContent container" style="display:none">
+                    <p>
+                        Thanh toán trực tuyến AN TOÀN và ĐƯỢC BẢO VỆ, sử dụng thẻ ngân hàng trong và ngoài nước hoặc nhiều hình thức tiện lợi khác.
+                        Được bảo hộ & cấp phép bởi NGÂN HÀNG NHÀ NƯỚC, ví điện tử duy nhất được cộng đồng ƯA THÍCH NHẤT 2 năm liên tiếp, Bộ Thông tin Truyền thông trao giải thưởng Sao Khuê
+                        <br />Giao dịch. Đăng ký ví NgânLượng.vn miễn phí <a href="https://www.nganluong.vn/?portal=nganluong&amp;page=user_register" target="_blank">tại đây</a>
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="radio" class="btn_radio" id="rdoBank" GroupName="paymentMethod" name="paymentMethods" value="ATM_ONLINE" />Thanh toán online bằng thẻ ngân hàng nội địa</label>
+                <br>
+                <div id="bankContent" class="boxContent container" style="display:none">
+                    <p>
+                        <i>
+                            <span style="color:#ff5a00;font-weight:bold;text-decoration:underline;">Lưu ý</span>: Bạn cần đăng ký Internet-Banking hoặc dịch vụ thanh toán trực tuyến tại ngân hàng trước khi thực hiện.
+                        </i>
+                    </p>
+
+                    <ul class="cardList clearfix" style="list-style-type: none">
+
+                        <li class="bank-online-methods ">
+                            <label for="vcb_ck_on">
+                                <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
+                                <input type="radio" ID="VCB" runat="server" GroupName="bankcode" value="VCB" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="vnbc_ck_on">
+                                <i class="DAB" title="Ngân hàng Đông Á"></i>
+                                <input type="radio" ID="DAB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="tcb_ck_on">
+                                <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
+                                <input type="radio" ID="TCB" runat="server" GroupName="bankcode" />
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_mb_ck_on">
+                                <i class="MB" title="Ngân hàng Quân Đội"></i>
+                                <input type="radio" ID="MB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="shb_ck_on">
+                                <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
+                                <input type="radio" ID="SHB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_vib_ck_on">
+                                <i class="VIB" title="Ngân hàng Quốc tế"></i>
+                                <input type="radio" ID="VIB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_vtb_ck_on">
+                                <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
+                                <input type="radio" ID="ICB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_exb_ck_on">
+                                <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
+                                <input type="radio" ID="EXB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_acb_ck_on">
+                                <i class="ACB" title="Ngân hàng Á Châu"></i>
+                                <input type="radio" ID="ACB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_hdb_ck_on">
+                                <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
+                                <input type="radio" ID="HDB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_msb_ck_on">
+                                <i class="MSB" title="Ngân hàng Hàng Hải"></i>
+                                <input type="radio" ID="MSB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_nvb_ck_on">
+                                <i class="NVB" title="Ngân hàng Nam Việt"></i>
+                                <input type="radio" ID="NVB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_vab_ck_on">
+                                <i class="VAB" title="Ngân hàng Việt Á"></i>
+                                <input type="radio" ID="VAB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_vpb_ck_on">
+                                <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
+                                <input type="radio" ID="VPB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_scb_ck_on">
+                                <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
+                                <input type="radio" ID="SCB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="ojb_ck_on">
+                                <i class="OJB" title="Ngân hàng Đại Dương"></i>
+                                <input type="radio" ID="OJB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="bnt_atm_pgb_ck_on">
+                                <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
+                                <input type="radio" ID="PGB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="bnt_atm_gpb_ck_on">
+                                <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
+                                <input type="radio" ID="GPB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="bnt_atm_agb_ck_on">
+                                <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
+                                <input type="radio" ID="AGB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="bnt_atm_sgb_ck_on">
+                                <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
+                                <input type="radio" ID="SGB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="bnt_atm_nab_ck_on">
+                                <i class="NAB" title="Ngân hàng Nam Á"></i>
+                                <input type="radio" ID="NAB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_bab_ck_on">
+                                <i class="BAB" title="Ngân hàng Bắc Á"></i>
+                                <input type="radio" ID="BAB" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+
+                        <li class="bank-online-methods ">
+                            <label for="sml_atm_bidv_ck_on">
+                                <i class="BIDV" title="Ngân hàng TMCP Đầu tư và Phát triển Việt Nam"></i>
+                                <input type="radio" ID="BIDV" runat="server" GroupName="bankcode" />
+
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="radio" class="btn_radio" id="rdoVISA" GroupName="paymentMethod" name="paymentMethods" value="VISA" />Thanh toán online bằng VISA</label>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+
+        </div>*@
+
+<table class="container" style="clear: both; width: 500px; padding-left: 46px; margin-bottom: 50px; margin-top: 50px">
+    <tr>
+        <td colspan="2"><p><span style="color:#ff5a00;font-weight:bold;text-decoration:underline;">Lưu ý</span> Bạn nhập đầy đủ thông tin sau </td>
+
+    </tr>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        {
+            <tr>
+                <td>Họ Tên: </td>
+                <td>
+                    <input runat="server" type="text" style="width:270px" id="buyer_fullname" name="HoTenTV" class="field-check form-control" value="@kh.HoTenTV">
+
+                </td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>
+                    <input runat="server" type="text" style="width:270px" id="buyer_email" name="Email" class="field-check form-control" value="@kh.Email">
+                </td>
+            </tr>
+            <tr>
+                <td>Số Điện thoại: </td>
+                <td>
+                    <input runat="server" type="text" style="width:270px" id="buyer_mobile" name="DienThoai" class="field-check form-control" value="@kh.DienThoai">
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td>
+                    <input runat="server" type="text" style="width:270px" id="buyer_address" name="DiaChi" class="field-check form-control" value="@kh.DiaChi">
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày đặt: </td>
+                <td>
+                    <input runat="server" type="text" style="width:270px" id="buyer_ngaydat" name="NgayDat" class="field-check form-control" value="@DateTime.Now.ToShortDateString()">
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày giao: </td>
+                <td>
+                    <input runat="server" type="date" style="width:270px" id="buyer_ngaygiao" name="NgayGiao" class="field-check form-control">
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <label>
+                        Chọn phương thức thanh toán:
+                    </label>
+                </td>
+                @*<td></td>*@
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <label>
+                        <input type="radio"class="btn_radio" id="rdoCash" GroupName="paymentMethod" name="paymentMethods" value="CASH" />
+                        Thanh toán sau khi nhận hàng
+                    </label>
+                </td>
+                @*<td></td>*@
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <label>
+                        <input type="radio" class="btn_radio" id="rdoNl" GroupName="paymentMethod" name="paymentMethods" value="NL" />
+                        Thanh toán bằng Ví điện tử NgânLượng
+                    </label>
+                </td>
+                @*<td></td>*@
+            </tr>
+            <tr>
+
+                <td colspan="2">
+                    <input type="submit" ID="nlpaymentNL" onclick="Button1_Click" class="btn btn-success " name="btn_Thanhtoan" value="Thanh toán" />
+                    <input type="text" id="valueMds" name="valueMd" style="display:none" hidden/>
+                </td>
+            </tr>
+
+
+        }
+    }
+</table>
+
+
+@*<script src="https://www.nganluong.vn/webskins/javascripts/jquery_min.js" type="text/javascript"></script>*@
+@*<script src="~/js/payment.js"></script>*@
+@*<script src="~/Models/PaymentMethodAndBankCode.js"></script>*@
+<script type="text/javascript">
+    //$('input[name="option_payment"]').bind('click', function () {
+    //    $('.list-content li').removeClass('active');
+    //    $(this).parent().parent('li').addClass('active');
+    //});
+    $('input[GroupName="paymentMethod"]').off('click').on('click', function () {
+        if ($(this).val() == 'NL') {
+            $('.boxContent .container').hide();
+            $('#nganluongContent').show();
+            $('#valueMds').show();
+            document.getElementById('valueMds').value = 'NL';
+        }
+        else if ($(this).val() == 'CASH') {
+            $('.boxContent .container').hide();
+            $('#bankContent').show();
+            $('#valueMds').show();
+            document.getElementById('valueMds').value = 'CASH';
+        }
+        else {
+            $('#nganluongContent').hide();
+            $('#bankContent').hide();
+            $('#valueMds').val() = 'NONE';
+        }
+    });
+
+
+    
+
+
+</script>

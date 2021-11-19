@@ -1,0 +1,62 @@
+﻿@model GreenFood.Models.CHUONGTRINHKHUYENMAI
+
+@{
+    ViewBag.Title = "OnChuongTrinh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>ĐỒNG Ý CHẠY CHƯƠNG TRÌNH NÀY TRÊN TRANG CHỦ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên chương trình:
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.TenKM)
+        </dd>
+
+        <dt>
+            Thời gian bắt đầu:
+        </dt>
+
+        <dd class="form-control">
+            @Html.FormatValue(@Model.ThoiGianBD, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            Thời gian kết thúc:
+        </dt>
+
+        <dd class="form-control">
+            @Html.FormatValue(@Model.ThoiGianKT, "{0:dd/MM/yyyy}")
+        </dd>
+
+        <dt>
+            Trạng thái:
+        </dt>
+
+        <dd class="form-control">
+            @if (@Model.Up == 1)
+            {
+                <a>Đang bật</a>
+            }
+            else
+            {
+                <a>Đang tắt</a>
+            }
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10" style="margin-top: 20px;">
+        <input type="submit" value="Yes" class="btn btn-outline-success" />
+    </div>
+</div>
+<p>
+    @Html.ActionLink("No", "QuanLyKhuyenMai")
+</p>
+
